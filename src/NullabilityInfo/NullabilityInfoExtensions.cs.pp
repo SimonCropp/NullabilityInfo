@@ -89,7 +89,7 @@ namespace System.Reflection
         internal static bool IsNullable(this ParameterInfo info)
         {
             var nullability = info.GetNullabilityInfo();
-            return IsNullable(info.Name, nullability);
+            return IsNullable(info.Name!, nullability);
         }
 
         static bool IsNullable(string name, NullabilityInfo nullability)
