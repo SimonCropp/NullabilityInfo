@@ -21,17 +21,35 @@ The cs files inside the nuget are also MIT but are [Copyright (c) .NET Foundatio
 
 https://nuget.org/packages/NullabilityInfo/
 
+
 ## Usage
+
+
+### Example target class
+
+Given the following class
+
+<!-- snippet: Target.cs -->
+<a id='snippet-Target.cs'></a>
+```cs
+using System.Collections.Generic;
+
+class Target
+{
+    public string? StringField;
+    public string?[] ArrayField;
+    public Dictionary<string, object?> GenericField;
+}
+```
+<sup><a href='/src/Tests/Target.cs#L1-L8' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
+### NullabilityInfoContext
 
 <!-- snippet: Usage -->
 <a id='snippet-usage'></a>
 ```cs
-class Target
-{
-    public string?[] ArrayField;
-    public Dictionary<string, object?> GenericField;
-}
-
 [Fact]
 public void Test()
 {
@@ -53,8 +71,22 @@ public void Test()
     Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L7-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L6-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+
+### NullabilityInfoExtensions
+
+`NullabilityInfoExtensions` provides atatic and thread safe wrapper around <see cref="NullabilityInfoContext"/>. It adds three extension methods to each of ParameterInfo, PropertyInfo, EventInfo, and FieldInfo.
+
+ * `GetNullabilityInfo`: returns the `NullabilityInfo` for the target info.
+ * `GetNullability`: returns the `NullabilityState` for the `NullabilityInfo.ReadState` of target info.
+ * `IsNullable`: given the `NullabilityInfo.ReadState` of the info:
+   * Returns true if state is `NullabilityState.Nullable`.
+   * Returns false if state is `NullabilityState.NotNull`.
+   * Throws an exception if state is `NullabilityState.Unknown`.
+
+
 
 
 ## API

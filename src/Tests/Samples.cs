@@ -1,16 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using Xunit;
 
 public class Samples
 {
     #region Usage
-
-    class Target
-    {
-        public string?[] ArrayField;
-        public Dictionary<string, object?> GenericField;
-    }
 
     [Fact]
     public void Test()
@@ -32,5 +25,20 @@ public class Samples
         Assert.Equal(NullabilityState.NotNull, genericInfo.GenericTypeArguments[0].ReadState);
         Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
     }
+
+    #endregion
+
+    #region Extension
+
+    [Fact]
+    public void ExtensionTests()
+    {
+        var type = typeof(Target);
+        var field = type.GetField("StringField");
+        Assert.True(field.IsNullable());
+        Assert.Equal(NullabilityState.Nullable, field.GetNullability());
+        Assert.Equal(NullabilityState.Nullable, field.GetNullabilityInfo().ReadState);
+    }
+
     #endregion
 }

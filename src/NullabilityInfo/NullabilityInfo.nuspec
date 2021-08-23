@@ -16,16 +16,18 @@
       <files include="**/*.cs.pp"/>
     </contentFiles>
   </metadata>
-
   <files>
-
-    <file src="NullabilityInfo.cs.pp" target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfo.cs.pp"/>
-    <file src="Helpers.cs.pp" target="contentFiles/cs/netstandard2.0/NullabilityInfo/Helpers.cs.pp"/>
-    <file src="NullabilityInfoContext.cs.pp" target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfoContext.cs.pp"/>
-
-    <!-- >= .NET 6 already has NullabilityInfo -->
-    <file src="../../src/.nuget/_._" target="contentFiles/cs/net6.0"/>
-
     <file src="../icon.png" target="icon.png" />
+
+    <file src="NullabilityInfo.cs.pp"
+          target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfo.cs.pp"/>
+    <file src="Helpers.cs.pp"
+          target="contentFiles/cs/netstandard2.0/NullabilityInfo/Helpers.cs.pp"/>
+    <file src="NullabilityInfoContext.cs.pp"
+          target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfoContext.cs.pp"/>
+
+    <!-- .NET 6 already has NullabilityInfo -->
+    <file src="NullabilityInfoContext.cs.pp"
+          target="contentFiles/cs/net6.0/NullabilityInfo/NullabilityInfoContext.cs.pp"/>
   </files>
 </package>

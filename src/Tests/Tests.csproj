@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\NullabilityInfo\*.cs.pp" Condition="$(TargetFramework) == 'net5'" />
+    <Compile Include="..\NullabilityInfo\NullabilityInfoExtensions.cs.pp" Condition="$(TargetFramework) == 'net6'" />
     <PackageReference Include="Verify.Xunit" Version="11.24.0" />
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" PrivateAssets="all" />

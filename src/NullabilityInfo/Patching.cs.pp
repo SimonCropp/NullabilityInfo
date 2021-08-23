@@ -8,9 +8,9 @@ namespace System.Reflection
         public static string NullabilityInfoContext_NotSupported = "NullabilityInfoContext is not supported";
     }
 
-    static class NullabilityInfoTypeExtensions
+    internal static partial class NullabilityInfoExtensions
     {
-        public static MemberInfo GetMemberWithSameMetadataDefinitionAs(this Type type, MemberInfo member)
+        internal static MemberInfo GetMemberWithSameMetadataDefinitionAs(this Type type, MemberInfo member)
         {
             if (member is null) throw new ArgumentNullException(nameof(member));
 
