@@ -9,6 +9,14 @@ This feature is [coming in net6](https://github.com/dotnet/runtime/issues/29723)
 
 Designed to be compatible for libraries that are targeting multiple frameworks including `net6`.
 
+
+## Copyright / Licensing
+
+The csproj and nuget config that builds the package is under MIT.
+
+The cs files inside the nuget are also MIT but are [Copyright (c) .NET Foundation and Contributors](https://github.com/dotnet/runtime/blob/main/LICENSE.TXT)
+
+
 ## NuGet package
 
 https://nuget.org/packages/NullabilityInfo/
