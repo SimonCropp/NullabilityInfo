@@ -34,7 +34,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this MemberInfo info)
         {
-            return GetKnownState(info.Name, info.GetNullabilityInfo());
+            return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this MemberInfo info)
@@ -54,7 +54,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this FieldInfo info)
         {
-            return GetKnownState(info.Name, info.GetNullabilityInfo());
+            return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this FieldInfo info)
@@ -74,7 +74,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this EventInfo info)
         {
-            return GetKnownState(info.Name, info.GetNullabilityInfo());
+            return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this EventInfo info)
@@ -94,7 +94,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this PropertyInfo info)
         {
-            return GetKnownState(info.Name, info.GetNullabilityInfo());
+            return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this PropertyInfo info)
@@ -114,13 +114,23 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this ParameterInfo info)
         {
-            return GetKnownState(info.Name!, info.GetNullabilityInfo());
+            return GetReadOrWriteState(info.Name!, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this ParameterInfo info)
         {
             var nullability = info.GetNullabilityInfo();
             return IsNullable(info.Name!, nullability);
+        }
+
+        static NullabilityState GetReadOrWriteState(string name, NullabilityInfo nullability)
+        {
+            if (nullability.ReadState != NullabilityState.Unknown)
+            {
+                return nullability.ReadState;
+            }
+
+            return nullability.WriteState;
         }
 
         static NullabilityState GetKnownState(string name, NullabilityInfo nullability)
