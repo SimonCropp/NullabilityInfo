@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ProjectDefaults" Version="1.0.56" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
+  </ItemGroup>
+  <Target Name="DownloadContentFiles" BeforeTargets="Build">
+    <DownloadFile
+      SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs"
+      DestinationFolder="$(MSBuildProjectDirectory)"/>
+    <DownloadFile
+      SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs"
+      DestinationFolder="$(MSBuildProjectDirectory)"/>
+  </Target>
+
+</Project>
