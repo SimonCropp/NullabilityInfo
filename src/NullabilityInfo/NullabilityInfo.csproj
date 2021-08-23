@@ -13,10 +13,8 @@
     </PropertyGroup>
   </Target>
   <Target Name="DownloadContentFiles" BeforeTargets="Build">
-    <DownloadFile 
-			      SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs" DestinationFileName="NullabilityInfo.cs.pp" DestinationFolder="$(MSBuildProjectDirectory)" />
-    <DownloadFile 
-			      SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs" DestinationFileName="NullabilityInfoContext.cs.pp" DestinationFolder="$(MSBuildProjectDirectory)" />
+    <DownloadFile SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs" DestinationFileName="NullabilityInfo.cs.pp" DestinationFolder="$(MSBuildProjectDirectory)" />
+    <DownloadFile SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs" DestinationFileName="NullabilityInfoContext.cs.pp" DestinationFolder="$(MSBuildProjectDirectory)" />
   </Target>
 
 </Project>

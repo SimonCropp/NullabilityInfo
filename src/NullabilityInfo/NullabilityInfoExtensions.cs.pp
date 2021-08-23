@@ -23,7 +23,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this FieldInfo info)
         {
-            return info.GetNullabilityInfo().ReadState;
+            return GetKnownState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this FieldInfo info)
@@ -43,7 +43,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this EventInfo info)
         {
-            return info.GetNullabilityInfo().ReadState;
+            return GetKnownState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this EventInfo info)
@@ -63,7 +63,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this PropertyInfo info)
         {
-            return info.GetNullabilityInfo().ReadState;
+            return GetKnownState(info.Name, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this PropertyInfo info)
@@ -83,7 +83,7 @@ namespace System.Reflection
 
         internal static NullabilityState GetNullability(this ParameterInfo info)
         {
-            return info.GetNullabilityInfo().ReadState;
+            return GetKnownState(info.Name!, info.GetNullabilityInfo());
         }
 
         internal static bool IsNullable(this ParameterInfo info)
@@ -92,31 +92,26 @@ namespace System.Reflection
             return IsNullable(info.Name!, nullability);
         }
 
-        static bool IsNullable(string name, NullabilityInfo nullability)
+        static NullabilityState GetKnownState(string name, NullabilityInfo nullability)
         {
             var readState = nullability.ReadState;
-            if (readState == NullabilityState.Nullable)
+            if (readState != NullabilityState.Unknown)
             {
-                return true;
-            }
-
-            if (readState == NullabilityState.NotNull)
-            {
-                return false;
+                return readState;
             }
 
             var writeState = nullability.WriteState;
-            if (writeState == NullabilityState.Nullable)
+            if (writeState != NullabilityState.Unknown)
             {
-                return true;
-            }
-
-            if (writeState == NullabilityState.NotNull)
-            {
-                return false;
+                return writeState;
             }
 
             throw new($"The nullability of '{name}' is unknown.");
+        }
+    
+        static bool IsNullable(string name, NullabilityInfo nullability)
+        {
+            return GetKnownState(name, nullability) == NullabilityState.Nullable;
         }
     }
 }
