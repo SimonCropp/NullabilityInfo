@@ -41,4 +41,28 @@ public class Samples
     }
 
     #endregion
+
+    
+    class PropertyTarget
+    {
+        string? write;
+        public string? ReadWrite { get; set; }
+        public string? Read{ get; }
+
+        public string? Write
+        {
+            set => write = value;
+        }
+    }
+    [Fact]
+    public void Property()
+    {
+        var type = typeof(PropertyTarget);
+        var readWrite = type.GetProperty("ReadWrite");
+        var write = type.GetProperty("Write");
+        var read = type.GetProperty("Read");
+        Assert.True(readWrite.IsNullable());
+        Assert.True(write.IsNullable());
+        Assert.True(read.IsNullable());
+    }
 }

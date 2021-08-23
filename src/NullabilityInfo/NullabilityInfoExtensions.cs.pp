@@ -94,18 +94,29 @@ namespace System.Reflection
 
         static bool IsNullable(string name, NullabilityInfo nullability)
         {
-            var state = nullability.ReadState;
-            if (state == NullabilityState.Nullable)
+            var readState = nullability.ReadState;
+            if (readState == NullabilityState.Nullable)
             {
                 return true;
             }
 
-            if (state == NullabilityState.NotNull)
+            if (readState == NullabilityState.NotNull)
             {
                 return false;
             }
 
-            throw new($"The nullability of '{name}' is unknwown.");
+            var writeState = nullability.WriteState;
+            if (writeState == NullabilityState.Nullable)
+            {
+                return true;
+            }
+
+            if (writeState == NullabilityState.NotNull)
+            {
+                return false;
+            }
+
+            throw new($"The nullability of '{name}' is unknown.");
         }
     }
 }
