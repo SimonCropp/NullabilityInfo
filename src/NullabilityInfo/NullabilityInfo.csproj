@@ -1,27 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6</TargetFrameworks>
-    <DevelopmentDependency>true</DevelopmentDependency>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <TargetFrameworks>net5</TargetFrameworks>
+    <NuSpecFile>NullabilityInfo.nuspec</NuSpecFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="NullabilityInfo.cs" />
-    <Compile Remove="NullabilityInfoContext.cs" />
-    <Compile Remove="SR.cs" />
-    <Content Include="*.cs"  >
-      <Pack>true</Pack>
-      <PackagePath>contentFiles/any/netstandard2.0</PackagePath>
-    </Content>
-    <Content Include="placeholder.txt"  >
-      <Pack>true</Pack>
-      <PackagePath>contentFiles/any/net6</PackagePath>
-    </Content>
     <PackageReference Include="ProjectDefaults" Version="1.0.56" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
   </ItemGroup>
+  <Target Name="SetPackageDependencies" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <NuspecProperties>configuration=$(Configuration);version=$(PackageVersion);authors=$(Authors);projectUrl=$(PackageProjectUrl);description=$(Description);tags=$(PackageTags)</NuspecProperties>
+    </PropertyGroup>
+  </Target>
   <Target Name="DownloadContentFiles" BeforeTargets="Build">
-    <DownloadFile SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs" DestinationFolder="$(MSBuildProjectDirectory)" />
-    <DownloadFile SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs" DestinationFolder="$(MSBuildProjectDirectory)" />
+    <DownloadFile 
+			      SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs" DestinationFileName="NullabilityInfo.cs.pp" DestinationFolder="$(MSBuildProjectDirectory)" />
+    <DownloadFile 
+			      SourceUrl="https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs" DestinationFileName="NullabilityInfoContext.cs.pp" DestinationFolder="$(MSBuildProjectDirectory)" />
   </Target>
 
 </Project>

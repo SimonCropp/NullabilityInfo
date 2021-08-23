@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>NullabilityInfo</id>
+    <version>$version$</version>
+    <authors>$authors$</authors>
+    <developmentDependency>true</developmentDependency>
+    <license type="expression">MIT</license>
+    <projectUrl>$projectUrl$</projectUrl>
+    <icon>icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <tags>$tags$</tags>
+    <contentFiles>
+      <files include="**/*.cs.pp"/>
+    </contentFiles>
+  </metadata>
+
+  <files>
+
+    <file src="NullabilityInfo.cs.pp" target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfo.cs.pp"/>
+    <file src="Helpers.cs.pp" target="contentFiles/cs/netstandard2.0/NullabilityInfo/Helpers.cs.pp"/>
+    <file src="NullabilityInfoContext.cs.pp" target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfoContext.cs.pp"/>
+
+    <!-- >= .NET 6 already has NullabilityInfo -->
+    <file src="../../src/.nuget/_._" target="contentFiles/cs/net6.0"/>
+
+    <file src="../icon.png" target="icon.png" />
+  </files>
+</package>

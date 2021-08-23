@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5</TargetFramework>
-    <NoWarn>CS8600;CS8602;CS8604;IDE0049</NoWarn>
+    <NoWarn>$(NoWarn);CS0649;CS8618</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\NullabilityInfo\*.cs"/>
-    <PackageReference Include="Verify.Xunit" Version="11.20.3" />
+    <Compile Include="..\NullabilityInfo\*.cs.pp" />
+    <PackageReference Include="Verify.Xunit" Version="11.24.0" />
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="MarkdownSnippets.MsBuild" Version="23.1.4" PrivateAssets="all" />
+    <PackageReference Include="MarkdownSnippets.MsBuild" Version="24.0.0" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.56" PrivateAssets="All" />
   </ItemGroup>
 </Project>
