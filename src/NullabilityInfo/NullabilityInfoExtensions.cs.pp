@@ -12,6 +12,37 @@ namespace System.Reflection
         static ConcurrentDictionary<EventInfo, NullabilityInfo> eventCache = new();
         static ConcurrentDictionary<FieldInfo, NullabilityInfo> fieldCache = new();
 
+        internal static NullabilityInfo GetNullabilityInfo(this MemberInfo info)
+        {
+            if (info is PropertyInfo propertyInfo)
+            {
+                return propertyInfo.GetNullabilityInfo();
+            }
+
+            if (info is EventInfo eventInfo)
+            {
+                return eventInfo.GetNullabilityInfo();
+            }
+
+            if (info is FieldInfo fieldInfo)
+            {
+                return fieldInfo.GetNullabilityInfo();
+            }
+
+            throw new ArgumentException($"Unsuported type:{info.GetType().FullName}");
+        }
+
+        internal static NullabilityState GetNullability(this MemberInfo info)
+        {
+            return GetKnownState(info.Name, info.GetNullabilityInfo());
+        }
+
+        internal static bool IsNullable(this MemberInfo info)
+        {
+            var nullability = info.GetNullabilityInfo();
+            return IsNullable(info.Name, nullability);
+        }
+
         internal static NullabilityInfo GetNullabilityInfo(this FieldInfo info)
         {
             return fieldCache.GetOrAdd(info, inner =>
