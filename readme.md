@@ -80,8 +80,8 @@ public void Test()
 `NullabilityInfoExtensions` provides atatic and thread safe wrapper around <see cref="NullabilityInfoContext"/>. It adds three extension methods to each of ParameterInfo, PropertyInfo, EventInfo, and FieldInfo.
 
  * `GetNullabilityInfo`: returns the `NullabilityInfo` for the target info.
- * `GetNullability`: returns the `NullabilityState` for the `NullabilityInfo.ReadState` of target info.
- * `IsNullable`: given the `NullabilityInfo.ReadState` of the info:
+ * `GetNullability`: returns the `NullabilityState` for the state (`NullabilityInfo.ReadState` or `NullabilityInfo.WriteState` depending on which has more info) of target info.
+ * `IsNullable`: given the state (`NullabilityInfo.ReadState` or `NullabilityInfo.WriteState` depending on which has more info) of the info:
    * Returns true if state is `NullabilityState.Nullable`.
    * Returns false if state is `NullabilityState.NotNull`.
    * Throws an exception if state is `NullabilityState.Unknown`.
