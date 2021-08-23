@@ -21,7 +21,7 @@
 
     <file src="NullabilityInfo.cs.pp"
           target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfo.cs.pp"/>
-    <file src="Helpers.cs.pp"
+    <file src="Patching.cs.pp"
           target="contentFiles/cs/netstandard2.0/NullabilityInfo/Patching.cs.pp"/>
     <file src="NullabilityInfoContext.cs.pp"
           target="contentFiles/cs/netstandard2.0/NullabilityInfo/NullabilityInfoContext.cs.pp"/>
