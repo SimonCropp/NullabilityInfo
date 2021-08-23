@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using Xunit;
 
 public class Samples
@@ -8,7 +9,7 @@ public class Samples
     class Target
     {
         public string?[] ArrayField;
-        public (string?, object) TupleField;
+        public Dictionary<string, object?> GenericField;
     }
 
     [Fact]
@@ -16,7 +17,7 @@ public class Samples
     {
         var type = typeof(Target);
         var arrayField = type.GetField("ArrayField");
-        var tupleField = type.GetField("TupleField");
+        var genericField = type.GetField("GenericField");
 
         var context = new NullabilityInfoContext();
 
@@ -25,11 +26,11 @@ public class Samples
         Assert.Equal(NullabilityState.NotNull, arrayInfo.ReadState);
         Assert.Equal(NullabilityState.Nullable, arrayInfo.ElementType.ReadState);
 
-        var tupleInfo = context.Create(tupleField);
+        var genericInfo = context.Create(genericField);
 
-        Assert.Equal(NullabilityState.NotNull, tupleInfo.ReadState);
-        Assert.Equal(NullabilityState.Nullable, tupleInfo.GenericTypeArguments[0].ReadState);
-        Assert.Equal(NullabilityState.NotNull, tupleInfo.GenericTypeArguments[1].ReadState);
+        Assert.Equal(NullabilityState.NotNull, genericInfo.ReadState);
+        Assert.Equal(NullabilityState.NotNull, genericInfo.GenericTypeArguments[0].ReadState);
+        Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
     }
     #endregion
 }

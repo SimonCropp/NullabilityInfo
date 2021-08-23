@@ -29,7 +29,7 @@ https://nuget.org/packages/NullabilityInfo/
 class Target
 {
     public string?[] ArrayField;
-    public (string?, object) TupleField;
+    public Dictionary<string, object?> GenericField;
 }
 
 [Fact]
@@ -37,7 +37,7 @@ public void Test()
 {
     var type = typeof(Target);
     var arrayField = type.GetField("ArrayField");
-    var tupleField = type.GetField("TupleField");
+    var genericField = type.GetField("GenericField");
 
     var context = new NullabilityInfoContext();
 
@@ -46,14 +46,14 @@ public void Test()
     Assert.Equal(NullabilityState.NotNull, arrayInfo.ReadState);
     Assert.Equal(NullabilityState.Nullable, arrayInfo.ElementType.ReadState);
 
-    var tupleInfo = context.Create(tupleField);
+    var genericInfo = context.Create(genericField);
 
-    Assert.Equal(NullabilityState.NotNull, tupleInfo.ReadState);
-    Assert.Equal(NullabilityState.Nullable, tupleInfo.GenericTypeArguments[0].ReadState);
-    Assert.Equal(NullabilityState.NotNull, tupleInfo.GenericTypeArguments[1].ReadState);
+    Assert.Equal(NullabilityState.NotNull, genericInfo.ReadState);
+    Assert.Equal(NullabilityState.NotNull, genericInfo.GenericTypeArguments[0].ReadState);
+    Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L6-L34' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L7-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
