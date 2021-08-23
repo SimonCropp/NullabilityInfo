@@ -18,6 +18,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullabilityInfo", "NullabilityInfo\NullabilityInfo.csproj", "{698FB675-3480-4107-8CAE-51452C6138CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{E7AE258B-9D63-4D00-927E-BDC511E3DD81}"
+	ProjectSection(ProjectDependencies) = postProject
+		{698FB675-3480-4107-8CAE-51452C6138CE} = {698FB675-3480-4107-8CAE-51452C6138CE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
