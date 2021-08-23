@@ -1,13 +1,13 @@
 # <img src="/src/icon.png" height="30px"> NullabilityInfo
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ff4ms9mevndkui7l?svg=true)](https://ci.appveyor.com/project/SimonCropp/NullabilityInfo)
+[![Build status](https://ci.appveyor.com/api/projects/status/636i70gvxfuwdq38?svg=true)](https://ci.appveyor.com/project/SimonCropp/NullabilityInfo)
 [![NuGet Status](https://img.shields.io/nuget/v/NullabilityInfo.svg)](https://www.nuget.org/packages/NullabilityInfo/)
 
 Code-only package that exposes top-level nullability information from reflection.
 
 This feature is [coming in net6](https://github.com/dotnet/runtime/issues/29723). This package exposes the APIs to lower runtime. It supports `netstandard2.0` and up.
 
-Designed to be comparible for libraries that are targeting multiple frameworks including `net6`.
+Designed to be compatible for libraries that are targeting multiple frameworks including `net6`.
 
 ## NuGet package
 
