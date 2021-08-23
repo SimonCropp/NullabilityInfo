@@ -104,9 +104,9 @@ namespace System.Reflection
 }
 ```
 
-<!-- snippet: NullabilityInfo.cs -->
-<a id='snippet-NullabilityInfo.cs'></a>
-```cs
+<!-- snippet: NullabilityInfo.cs.pp -->
+<a id='snippet-NullabilityInfo.cs.pp'></a>
+```pp
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -172,7 +172,7 @@ namespace System.Reflection
     }
 }
 ```
-<sup><a href='/src/NullabilityInfo/NullabilityInfo.cs#L1-L64' title='Snippet source file'>snippet source</a> | <a href='#snippet-NullabilityInfo.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/NullabilityInfo/NullabilityInfo.cs.pp#L1-L64' title='Snippet source file'>snippet source</a> | <a href='#snippet-NullabilityInfo.cs.pp' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
