@@ -42,18 +42,19 @@ public class Samples
 
     #endregion
 
-    
+
     class PropertyTarget
     {
         string? write;
         public string? ReadWrite { get; set; }
-        public string? Read{ get; }
+        public string? Read { get; }
 
         public string? Write
         {
             set => write = value;
         }
     }
+
     [Fact]
     public void Property()
     {

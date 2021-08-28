@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6</TargetFrameworks>
+    <langVersion>preview</langVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\NullabilityInfo\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
+    <Compile Include="..\NullabilityInfo\NullabilityInfo.cs.pp" Link="NullabilityInfo.cs" Condition="$(TargetFramework) == 'netstandard2.0'" />
+    <Compile Include="..\NullabilityInfo\NullabilityInfoContext.cs.pp" Link="NullabilityInfoContext.cs" Condition="$(TargetFramework) == 'netstandard2.0'" />
+    <Compile Include="..\NullabilityInfo\Patching.cs.pp" Link="Patching.cs" Condition="$(TargetFramework) == 'netstandard2.0'" />
+    <PackageReference Include="FluentValidation" Version="10.3.3" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.56" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
+  </ItemGroup>
+</Project>

@@ -10,7 +10,7 @@ using Xunit;
 
 namespace System.Reflection.Tests
 {
-    public class NullabilityInfoContextTests
+    class NullabilityInfoContextTests
     {
         private static readonly NullabilityInfoContext nullabilityContext = new NullabilityInfoContext();
         private static readonly Type testType = typeof(TypeWithNotNullContext);
@@ -803,7 +803,7 @@ namespace System.Reflection.Tests
         public string MethodNullableDisabled([AllowNull] string value, string ret) { return null; }
     }
 
-    public class TypeWithNotNullContext
+    class TypeWithNotNullContext
     {
         public string PropertyUnknown { get; set; }
         short PropertyValueTypeUnknown { get; set; }

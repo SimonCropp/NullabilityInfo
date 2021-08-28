@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Collections.ObjectModel;
@@ -8,7 +8,7 @@ namespace System.Reflection
     /// <summary>
     /// A class that represents nullability info
     /// </summary>
-    public sealed class NullabilityInfo
+    sealed class NullabilityInfo
     {
         internal NullabilityInfo(Type type, NullabilityState readState, NullabilityState writeState,
             NullabilityInfo? elementType, NullabilityInfo[] typeArguments)
@@ -46,7 +46,7 @@ namespace System.Reflection
     /// <summary>
     /// An enum that represents nullability state
     /// </summary>
-    public enum NullabilityState
+    enum NullabilityState
     {
         /// <summary>
         /// Nullability context not enabled (oblivious)
