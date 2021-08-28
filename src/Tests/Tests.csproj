@@ -16,8 +16,6 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="MarkdownSnippets.MsBuild" Version="24.0.0" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.56" PrivateAssets="All" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Nullable.FluentValidation\Nullable.FluentValidation.csproj" />
   </ItemGroup>
 </Project>
