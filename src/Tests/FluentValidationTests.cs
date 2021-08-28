@@ -28,7 +28,8 @@ public class FluentValidationTests
         return Verifier.Verify(result);
     }
 
-    class TargetWithNullsValidator : RespectNullValidator<TargetWithNulls>
+    class TargetWithNullsValidator : 
+        RespectNullValidator<TargetWithNulls>
     {
     }
 
@@ -67,7 +68,8 @@ public class FluentValidationTests
         return Verifier.Verify(result);
     }
 
-    class TargetWithNoNullsValidator : RespectNullValidator<TargetWithNoNulls>
+    class TargetWithNoNullsValidator :
+        RespectNullValidator<TargetWithNoNulls>
     {
     }
 
@@ -106,7 +108,8 @@ public class FluentValidationTests
         return Verifier.Verify(result);
     }
 
-    class TargetValueTypesValidator : RespectNullValidator<TargetValueTypes>
+    class TargetValueTypesValidator :
+        RespectNullValidator<TargetValueTypes>
     {
     }
 
@@ -139,13 +142,15 @@ public class FluentValidationTests
     #region RespectNullValidatorUsage
 
     
-    class PersonValidatorFromBase : RespectNullValidator<Person>
+    class PersonValidatorFromBase :
+        RespectNullValidator<Person>
     {
     }
 
     #endregion
     #region AddNullableRulesUsage
-    class PersonValidatorNonBase : AbstractValidator<Person>
+    class PersonValidatorNonBase :
+        AbstractValidator<Person>
     {
         public PersonValidatorNonBase()
         {
@@ -154,7 +159,8 @@ public class FluentValidationTests
     }
     #endregion
     #region Equivalent
-    class PersonValidatorEquivalent : RespectNullValidator<Person>
+    class PersonValidatorEquivalent :
+        RespectNullValidator<Person>
     {
         public PersonValidatorEquivalent()
         {

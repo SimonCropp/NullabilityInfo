@@ -13,11 +13,11 @@ namespace FluentValidation
         {
             var type = typeof(T);
             var properties = type.GetProperties(flags)
-                .Where(x => x.GetMethod != null && 
-                            NullabilityInfoExtensions.GetNullabilityInfo((PropertyInfo)x).ReadState == NullabilityState.NotNull);
+                .Where(x => x.GetMethod != null &&
+                            x.GetNullabilityInfo().ReadState == NullabilityState.NotNull);
+            var param = Expression.Parameter(type);
             foreach (var property in properties)
             {
-                var param = Expression.Parameter(type);
                 var body = Expression.Property(param, property);
                 var converted = Expression.Convert(body, typeof(object));
                 var expression = Expression.Lambda<Func<T, object>>(converted, param);
