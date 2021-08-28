@@ -176,7 +176,7 @@ namespace System.Reflection
 
 ## Nullable.FluentValidation
 
-Nullable.FluentValidation is a package that leverages nullability information to make all non-nullable reference properties to be required.
+Nullable.FluentValidation is a package that extends [FluentValidation](https://fluentvalidation.net/). It leverages nullability information to make all non-nullable reference properties to be required.
 
 
 ### Nuget
