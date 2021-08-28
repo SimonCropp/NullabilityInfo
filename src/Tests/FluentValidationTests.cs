@@ -160,7 +160,7 @@ public class FluentValidationTests
     #endregion
     #region Equivalent
     class PersonValidatorEquivalent :
-        RespectNullValidator<Person>
+        AbstractValidator<Person>
     {
         public PersonValidatorEquivalent()
         {
