@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net6</TargetFrameworks>
     <langVersion>preview</langVersion>
+    <PackageProjectUrl>https://github.com/SimonCropp/NullabilityInfo#nullablefluentvalidation</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\NullabilityInfo\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
