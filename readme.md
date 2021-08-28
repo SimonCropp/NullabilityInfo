@@ -196,11 +196,12 @@ Using a base class `RespectNullValidator`:
 <!-- snippet: RespectNullValidatorUsage -->
 <a id='snippet-respectnullvalidatorusage'></a>
 ```cs
-class PersonValidatorFromBase : RespectNullValidator<Person>
+class PersonValidatorFromBase :
+    RespectNullValidator<Person>
 {
 }
 ```
-<sup><a href='/src/Tests/FluentValidationTests.cs#L139-L146' title='Snippet source file'>snippet source</a> | <a href='#snippet-respectnullvalidatorusage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/FluentValidationTests.cs#L142-L150' title='Snippet source file'>snippet source</a> | <a href='#snippet-respectnullvalidatorusage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -211,7 +212,8 @@ Using an extension method `AddNullableRules`:
 <!-- snippet: AddNullableRulesUsage -->
 <a id='snippet-addnullablerulesusage'></a>
 ```cs
-class PersonValidatorNonBase : AbstractValidator<Person>
+class PersonValidatorNonBase :
+    AbstractValidator<Person>
 {
     public PersonValidatorNonBase()
     {
@@ -219,7 +221,7 @@ class PersonValidatorNonBase : AbstractValidator<Person>
     }
 }
 ```
-<sup><a href='/src/Tests/FluentValidationTests.cs#L147-L155' title='Snippet source file'>snippet source</a> | <a href='#snippet-addnullablerulesusage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/FluentValidationTests.cs#L151-L160' title='Snippet source file'>snippet source</a> | <a href='#snippet-addnullablerulesusage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -230,7 +232,8 @@ The above are equivalent to:
 <!-- snippet: Equivalent -->
 <a id='snippet-equivalent'></a>
 ```cs
-class PersonValidatorEquivalent : RespectNullValidator<Person>
+class PersonValidatorEquivalent :
+    RespectNullValidator<Person>
 {
     public PersonValidatorEquivalent()
     {
@@ -239,7 +242,7 @@ class PersonValidatorEquivalent : RespectNullValidator<Person>
     }
 }
 ```
-<sup><a href='/src/Tests/FluentValidationTests.cs#L156-L165' title='Snippet source file'>snippet source</a> | <a href='#snippet-equivalent' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/FluentValidationTests.cs#L161-L171' title='Snippet source file'>snippet source</a> | <a href='#snippet-equivalent' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

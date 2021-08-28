@@ -15,14 +15,25 @@ namespace FluentValidation
             var properties = type.GetProperties(flags)
                 .Where(x => x.GetMethod != null &&
                             x.GetNullabilityInfo().ReadState == NullabilityState.NotNull);
-            var param = Expression.Parameter(type);
             foreach (var property in properties)
             {
-                var body = Expression.Property(param, property);
-                var converted = Expression.Convert(body, typeof(object));
-                var expression = Expression.Lambda<Func<T, object>>(converted, param);
-                validator.RuleFor(expression).NotNull();
+                var ruleBuilderInitial = validator.RuleFor(property);
+                ruleBuilderInitial.NotNull();
             }
+        }
+
+        public static IRuleBuilderInitial<TTarget, object> RuleFor<TTarget>(this AbstractValidator<TTarget> validator, PropertyInfo property)
+        {
+            return validator.RuleFor<TTarget, object>(property);
+        }
+
+        public static IRuleBuilderInitial<TTarget, TProperty> RuleFor<TTarget, TProperty>(this AbstractValidator<TTarget> validator, PropertyInfo property)
+        {
+            var param = Expression.Parameter(typeof(TTarget));
+            var body = Expression.Property(param, property);
+            var converted = Expression.Convert(body, typeof(TProperty));
+            var expression = Expression.Lambda<Func<TTarget, TProperty>>(converted, param);
+            return validator.RuleFor(expression);
         }
     }
 }
