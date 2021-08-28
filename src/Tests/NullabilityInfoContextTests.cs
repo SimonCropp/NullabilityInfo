@@ -10,7 +10,7 @@ using Xunit;
 
 namespace System.Reflection.Tests
 {
-    class NullabilityInfoContextTests
+    public class NullabilityInfoContextTests
     {
         private static readonly NullabilityInfoContext nullabilityContext = new NullabilityInfoContext();
         private static readonly Type testType = typeof(TypeWithNotNullContext);
@@ -38,7 +38,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(FieldTestData))]
-        public void FieldTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void FieldTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             FieldInfo field = testType.GetField(fieldName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(field);
@@ -58,7 +58,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(EventTestData))]
-        public void EventTest(string eventName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void EventTest(string eventName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             EventInfo @event = testType.GetEvent(eventName);
             NullabilityInfo nullability = nullabilityContext.Create(@event);
@@ -94,7 +94,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(PropertyTestData))]
-        public void PropertyTest(string propertyName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void PropertyTest(string propertyName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             PropertyInfo property = testType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -121,7 +121,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(ArrayPropertyTestData))]
-        public void ArrayPropertyTest(string propertyName, NullabilityState elementState, NullabilityState propertyState)
+        internal void ArrayPropertyTest(string propertyName, NullabilityState elementState, NullabilityState propertyState)
         {
             PropertyInfo property = testType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -142,7 +142,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericArrayPropertyTestData))]
-        public void GenericArrayPropertyTest(string propertyName, NullabilityState elementState, NullabilityState propertyState)
+        internal void GenericArrayPropertyTest(string propertyName, NullabilityState elementState, NullabilityState propertyState)
         {
             PropertyInfo property = genericType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -165,7 +165,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(JaggedArrayPropertyTestData))]
-        public void JaggedArrayPropertyTest(string propertyName, NullabilityState innermodtElementState, NullabilityState elementState, NullabilityState propertyState)
+        internal void JaggedArrayPropertyTest(string propertyName, NullabilityState innermodtElementState, NullabilityState elementState, NullabilityState propertyState)
         {
             PropertyInfo property = testType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -189,7 +189,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(TuplePropertyTestData))]
-        public void TuplePropertyTest(string propertyName, NullabilityState genericParam1, NullabilityState genericParam2, NullabilityState genericParam3, NullabilityState propertyState)
+        internal void TuplePropertyTest(string propertyName, NullabilityState genericParam1, NullabilityState genericParam2, NullabilityState genericParam3, NullabilityState propertyState)
         {
             PropertyInfo property = testType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -213,7 +213,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericTuplePropertyTestData))]
-        public void GenericTuplePropertyTest(string propertyName, NullabilityState genericParam1, NullabilityState genericParam2, NullabilityState genericParam3, NullabilityState propertyState)
+        internal void GenericTuplePropertyTest(string propertyName, NullabilityState genericParam1, NullabilityState genericParam2, NullabilityState genericParam3, NullabilityState propertyState)
         {
             PropertyInfo property = genericType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -238,7 +238,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(DictionaryPropertyTestData))]
-        public void DictionaryPropertyTest(string propertyName, NullabilityState keyState, NullabilityState valueElement, NullabilityState valueState, NullabilityState propertyState)
+        internal void DictionaryPropertyTest(string propertyName, NullabilityState keyState, NullabilityState valueElement, NullabilityState valueState, NullabilityState propertyState)
         {
             PropertyInfo property = testType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -263,7 +263,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericDictionaryPropertyTestData))]
-        public void GenericDictionaryPropertyTest(string propertyName, NullabilityState keyState, NullabilityState valueElement, NullabilityState valueState, NullabilityState propertyState)
+        internal void GenericDictionaryPropertyTest(string propertyName, NullabilityState keyState, NullabilityState valueElement, NullabilityState valueState, NullabilityState propertyState)
         {
             PropertyInfo property = genericType.GetProperty(propertyName, flags);
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -288,7 +288,7 @@ namespace System.Reflection.Tests
 #nullable enable
         [Theory]
         [MemberData(nameof(GenericPropertyReferenceTypeTestData))]
-        public void GenericPropertyReferenceTypeTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void GenericPropertyReferenceTypeTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             PropertyInfo property = typeof(GenericTest<TypeWithNotNullContext?>).GetProperty(fieldName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(property);
@@ -322,7 +322,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericFieldReferenceTypeTestData))]
-        public void GenericFieldReferenceTypeTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void GenericFieldReferenceTypeTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             FieldInfo field = typeof(GenericTest<TypeWithNotNullContext?>).GetField(fieldName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(field);
@@ -379,7 +379,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericFieldNullableValueTypeTestData))]
-        public void GenericFieldNullableValueTypeTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void GenericFieldNullableValueTypeTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             FieldInfo field = typeof(GenericTest<int?>).GetField(fieldName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(field);
@@ -397,7 +397,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericNotnullConstraintTestData))]
-        public void GenericNotNullConstraintTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void GenericNotNullConstraintTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             FieldInfo field = typeof(GenericTestConstrainedNotNull<string>).GetField(fieldName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(field);
@@ -415,7 +415,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(GenericStructConstraintTestData))]
-        public void GenericStructConstraintTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void GenericStructConstraintTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             FieldInfo field = typeof(GenericTestConstrainedStruct<int>).GetField(fieldName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(field);
@@ -498,7 +498,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(MethodReturnParameterTestData))]
-        public void MethodReturnParameterTest(string methodName, NullabilityState elementState, NullabilityState readState)
+        internal void MethodReturnParameterTest(string methodName, NullabilityState elementState, NullabilityState readState)
         {
             MethodInfo method = testType.GetMethod(methodName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(method.ReturnParameter);
@@ -522,7 +522,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(MethodGenericReturnParameterTestData))]
-        public void MethodGenericReturnParameterTest(string methodName, NullabilityState readState, NullabilityState elementState)
+        internal void MethodGenericReturnParameterTest(string methodName, NullabilityState readState, NullabilityState elementState)
         {
             MethodInfo method = typeof(GenericTest<TypeWithNotNullContext?>).GetMethod(methodName, flags)!;
             NullabilityInfo nullability = nullabilityContext.Create(method.ReturnParameter);
@@ -544,7 +544,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(MethodParametersTestData))]
-        public void MethodParametersTest(string methodName, NullabilityState stringState, NullabilityState dictKey, NullabilityState dictValueElement, NullabilityState dictValue, NullabilityState dictionaryState)
+        internal void MethodParametersTest(string methodName, NullabilityState stringState, NullabilityState dictKey, NullabilityState dictValueElement, NullabilityState dictValue, NullabilityState dictionaryState)
         {
             ParameterInfo[] parameters = testType.GetMethod(methodName, flags)!.GetParameters();
             NullabilityInfo stringNullability = nullabilityContext.Create(parameters[0]);
@@ -567,7 +567,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(MethodGenericParametersTestData))]
-        public void MethodGenericParametersTest(string methodName, NullabilityState param1State, NullabilityState dictKey, NullabilityState dictValue, NullabilityState dictionaryState)
+        internal void MethodGenericParametersTest(string methodName, NullabilityState param1State, NullabilityState dictKey, NullabilityState dictValue, NullabilityState dictionaryState)
         {
             ParameterInfo[] parameters = typeof(GenericTest<TypeWithNotNullContext>).GetMethod(methodName, flags)!.GetParameters();
             NullabilityInfo stringNullability = nullabilityContext.Create(parameters[0]);
@@ -588,7 +588,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(StringTypeTestData))]
-        public void NullablePublicOnlyStringTypeTest(string methodName, NullabilityState param1State, NullabilityState param2State, NullabilityState param3State, Type[] types)
+        internal void NullablePublicOnlyStringTypeTest(string methodName, NullabilityState param1State, NullabilityState param2State, NullabilityState param3State, Type[] types)
         {
             ParameterInfo[] parameters = stringType.GetMethod(methodName, flags, null, types, null)!.GetParameters();
             NullabilityInfo param1 = nullabilityContext.Create(parameters[0]);
@@ -661,7 +661,7 @@ namespace System.Reflection.Tests
         }
         [Theory]
         [MemberData(nameof(DifferentContextTestData))]
-        public void NullabilityDifferentContextTest(string propertyName, NullabilityState readState, NullabilityState writeState, Type type)
+        internal void NullabilityDifferentContextTest(string propertyName, NullabilityState readState, NullabilityState writeState, Type type)
         {
             Type noContext = typeof(TypeWithNoContext);
             PropertyInfo property = noContext.GetProperty(propertyName, flags)!;
@@ -749,7 +749,7 @@ namespace System.Reflection.Tests
 
         [Theory]
         [MemberData(nameof(RefReturnData))]
-        public void RefReturnTestTest(string methodName, NullabilityState retReadState, NullabilityState retWriteState, NullabilityState paramReadState, NullabilityState paramWriteState)
+        internal void RefReturnTestTest(string methodName, NullabilityState retReadState, NullabilityState retWriteState, NullabilityState paramReadState, NullabilityState paramWriteState)
         {
             MethodInfo method = typeof(TypeWithNullableContext).GetMethod(methodName, flags)!;
             NullabilityInfo returnNullability = nullabilityContext.Create(method.ReturnParameter);
