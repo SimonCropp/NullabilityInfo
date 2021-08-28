@@ -18,6 +18,6 @@
     <PackageReference Include="ProjectDefaults" Version="1.0.56" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FluentValidation.Nullable\FluentValidation.Nullable.csproj" />
+    <ProjectReference Include="..\Nullable.FluentValidation\Nullable.FluentValidation.csproj" />
   </ItemGroup>
 </Project>
