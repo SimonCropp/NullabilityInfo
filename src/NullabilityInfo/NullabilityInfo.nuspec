@@ -23,7 +23,7 @@
           target="contentFiles/cs/netstandard2.0/NullabilityInfo/"/>
 
     <!-- .NET 6 already has NullabilityInfo -->
-    <file src="NullabilityInfoContext.cs.pp"
+    <file src="NullabilityInfoExtensions.cs.pp"
           target="contentFiles/cs/net6.0/NullabilityInfo/"/>
   </files>
 </package>
