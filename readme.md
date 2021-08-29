@@ -233,7 +233,7 @@ The above are equivalent to:
 <a id='snippet-equivalent'></a>
 ```cs
 class PersonValidatorEquivalent :
-    RespectNullValidator<Person>
+    AbstractValidator<Person>
 {
     public PersonValidatorEquivalent()
     {
