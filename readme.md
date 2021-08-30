@@ -174,84 +174,15 @@ namespace System.Reflection
 <!-- endSnippet -->
 
 
-## Nullable.FluentValidation
-
-Nullable.FluentValidation is a package that extends [FluentValidation](https://fluentvalidation.net/). It leverages nullability information to make all non-nullable reference properties to be required.
-
-
-### Nuget
-
-https://nuget.org/packages/Nullable.FluentValidation/
-
-
-### Usage
-
-There are two ways of applying non null rules.
-
-
-#### RespectNullValidator
-
-Using a base class `RespectNullValidator`:
-
-<!-- snippet: RespectNullValidatorUsage -->
-<a id='snippet-respectnullvalidatorusage'></a>
-```cs
-class PersonValidatorFromBase :
-    RespectNullValidator<Person>
-{
-}
-```
-<sup><a href='/src/Tests/FluentValidationTests.cs#L142-L150' title='Snippet source file'>snippet source</a> | <a href='#snippet-respectnullvalidatorusage' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
-#### AddNullableRules
-
-Using an extension method `AddNullableRules`:
-
-<!-- snippet: AddNullableRulesUsage -->
-<a id='snippet-addnullablerulesusage'></a>
-```cs
-class PersonValidatorNonBase :
-    AbstractValidator<Person>
-{
-    public PersonValidatorNonBase()
-    {
-        this.AddNullableRules();
-    }
-}
-```
-<sup><a href='/src/Tests/FluentValidationTests.cs#L151-L160' title='Snippet source file'>snippet source</a> | <a href='#snippet-addnullablerulesusage' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
-#### Equivalent
-
-The above are equivalent to:
-
-<!-- snippet: Equivalent -->
-<a id='snippet-equivalent'></a>
-```cs
-class PersonValidatorEquivalent :
-    AbstractValidator<Person>
-{
-    public PersonValidatorEquivalent()
-    {
-        RuleFor(x => x.GivenName).NotNull();
-        RuleFor(x => x.FamilyName).NotNull();
-    }
-}
-```
-<sup><a href='/src/Tests/FluentValidationTests.cs#L161-L171' title='Snippet source file'>snippet source</a> | <a href='#snippet-equivalent' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
 ## How this is built
 
 On every build the `NullabilityInfo.csproj` downloads `NullabilityInfo.cs` and `NullabilityInfoContext.cs`. This ensures that the bundled files are always up to date on each release.
 
 
+## Nullable.FluentValidation
+
+Moved to https://github.com/SimonCropp/ExtendedFluentValidation
+
 ## Icon
 
 [Reflection](https://thenounproject.com/term/reflection/4087162/) designed by [Yogi Aprelliyanto](https://thenounproject.com/yogiaprelliyanto/) from [The Noun Project](https://thenounproject.com).
-
