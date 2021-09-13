@@ -395,17 +395,6 @@ namespace System.Reflection.Tests
             yield return new object[] { "FieldNullableEnabled", NullabilityState.NotNull, NullabilityState.NotNull, typeof(string) };
         }
 
-        [Theory]
-        [MemberData(nameof(GenericNotnullConstraintTestData))]
-        internal void GenericNotNullConstraintTest(string fieldName, NullabilityState readState, NullabilityState writeState, Type type)
-        {
-            FieldInfo field = typeof(GenericTestConstrainedNotNull<string>).GetField(fieldName, flags)!;
-            NullabilityInfo nullability = nullabilityContext.Create(field);
-            Assert.Equal(readState, nullability.ReadState);
-            Assert.Equal(writeState, nullability.WriteState);
-            Assert.Equal(type, nullability.Type);
-        }
-
         public static IEnumerable<object[]> GenericStructConstraintTestData()
         {
             yield return new object[] { "FieldNullable", NullabilityState.Nullable, NullabilityState.Nullable, typeof(int?) };
