@@ -3,7 +3,7 @@ skip_commits:
 image:
 - Visual Studio 2019
 - macOS
-#- Ubuntu
+- Ubuntu
 build_script:
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 - pwsh: |
