@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-
-namespace System.Reflection
+﻿namespace System.Reflection
 {
     class SR
     {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-class Target
+﻿class Target
 {
     public string? StringField;
     public string?[] ArrayField;

@@ -32,8 +32,6 @@ Given the following class
 <!-- snippet: Target.cs -->
 <a id='snippet-Target.cs'></a>
 ```cs
-using System.Collections.Generic;
-
 class Target
 {
     public string? StringField;
@@ -41,7 +39,7 @@ class Target
     public Dictionary<string, object?> GenericField;
 }
 ```
-<sup><a href='/src/Tests/Target.cs#L1-L8' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Target.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
