@@ -145,7 +145,7 @@
                 return writeState;
             }
 
-            throw new($"The nullability of '{name}' is unknown.");
+            throw new($"The nullability of '{nullability.Type.FullName}.{name}' is unknown. Assembly: {nullability.Type.Assembly.FullName}.");
         }
     
         static bool IsNullable(string name, NullabilityInfo nullability)
