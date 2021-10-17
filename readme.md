@@ -177,10 +177,6 @@ namespace System.Reflection
 On every build the `NullabilityInfo.csproj` downloads `NullabilityInfo.cs` and `NullabilityInfoContext.cs`. This ensures that the bundled files are always up to date on each release.
 
 
-## Nullable.FluentValidation
-
-Moved to https://github.com/SimonCropp/ExtendedFluentValidation
-
 ## Icon
 
 [Reflection](https://thenounproject.com/term/reflection/4087162/) designed by [Yogi Aprelliyanto](https://thenounproject.com/yogiaprelliyanto/) from [The Noun Project](https://thenounproject.com).
