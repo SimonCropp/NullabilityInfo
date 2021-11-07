@@ -1,4 +1,6 @@
-﻿namespace System.Reflection
+﻿using System.Collections.Concurrent;
+
+namespace System.Reflection
 {
     /// <summary>
     /// Static and thread safe wrapper around <see cref="NullabilityInfoContext"/>.
