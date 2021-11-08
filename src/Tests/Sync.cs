@@ -14,6 +14,9 @@ public class Sync
         nullabilityInfoContext = nullabilityInfoContext.Replace("public sealed class", "sealed class");
         await OverWrite(nullabilityInfoContext, "NullabilityInfoContext.cs.pp");
         var nullabilityInfo = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
+
+        nullabilityInfo = $@"#nullable enable
+{nullabilityInfo}";
         nullabilityInfo = nullabilityInfo
             .Replace("public enum", "enum")
             .Replace("public sealed class", "sealed class");
