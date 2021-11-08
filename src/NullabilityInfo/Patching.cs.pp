@@ -1,4 +1,6 @@
-﻿namespace System.Reflection
+﻿#nullable enable
+
+namespace System.Reflection
 {
     class SR
     {
