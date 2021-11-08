@@ -9,10 +9,10 @@ namespace System.Reflection
     /// </summary>
     internal static partial class NullabilityInfoExtensions
     {
-        static ConcurrentDictionary<ParameterInfo, NullabilityInfo> parameterCache = new();
-        static ConcurrentDictionary<PropertyInfo, NullabilityInfo> propertyCache = new();
-        static ConcurrentDictionary<EventInfo, NullabilityInfo> eventCache = new();
-        static ConcurrentDictionary<FieldInfo, NullabilityInfo> fieldCache = new();
+        static ConcurrentDictionary<ParameterInfo, NullabilityInfo> parameterCache = new ConcurrentDictionary<ParameterInfo, NullabilityInfo>();
+        static ConcurrentDictionary<PropertyInfo, NullabilityInfo> propertyCache = new ConcurrentDictionary<PropertyInfo, NullabilityInfo>();
+        static ConcurrentDictionary<EventInfo, NullabilityInfo> eventCache = new ConcurrentDictionary<EventInfo, NullabilityInfo>();
+        static ConcurrentDictionary<FieldInfo, NullabilityInfo> fieldCache = new ConcurrentDictionary<FieldInfo, NullabilityInfo>();
 
         internal static NullabilityInfo GetNullabilityInfo(this MemberInfo info)
         {

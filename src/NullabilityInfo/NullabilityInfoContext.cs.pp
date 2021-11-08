@@ -14,8 +14,8 @@ namespace System.Reflection
     sealed class NullabilityInfoContext
     {
         private const string CompilerServicesNameSpace = "System.Runtime.CompilerServices";
-        private readonly Dictionary<Module, NotAnnotatedStatus> _publicOnlyModules = new();
-        private readonly Dictionary<MemberInfo, NullabilityState> _context = new();
+        private readonly Dictionary<Module, NotAnnotatedStatus> _publicOnlyModules = new Dictionary<Module, NotAnnotatedStatus>();
+        private readonly Dictionary<MemberInfo, NullabilityState> _context = new Dictionary<MemberInfo, NullabilityState>();
 
         internal static bool IsSupported { get; } =
             AppContext.TryGetSwitch("System.Reflection.NullabilityInfoContext.IsSupported", out bool isSupported) ? isSupported : true;
