@@ -11,6 +11,9 @@ public class Sync
     {
         var client = new HttpClient();
         var nullabilityInfoContext = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs");
+        
+        nullabilityInfoContext = $@"#nullable enable
+{nullabilityInfoContext}";
         nullabilityInfoContext = nullabilityInfoContext.Replace("public sealed class", "sealed class");
         await OverWrite(nullabilityInfoContext, "NullabilityInfoContext.cs.pp");
         var nullabilityInfo = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
