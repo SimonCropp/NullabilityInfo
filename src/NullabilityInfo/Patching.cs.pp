@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 
 namespace System.Reflection
 {
@@ -22,7 +22,7 @@ namespace System.Reflection
                 }
             }
 
-            throw new($"Member not found:{member.Name}");
+            throw new MissingMemberException(type.FullName, member.Name);
         }
 
         //https://github.com/dotnet/runtime/blob/main/src/coreclr/System.Private.CoreLib/src/System/Reflection/MemberInfo.Internal.cs
