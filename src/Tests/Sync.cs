@@ -1,32 +1,49 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using VerifyTests;
 using Xunit;
 
 public class Sync
 {
     static string dir = Path.Combine(AttributeReader.GetSolutionDirectory(typeof(Sync).Assembly), "NullabilityInfo");
-
-    [Fact]
-    public async Task Run()
+    static Dictionary<string, string> replacements = new()
     {
-        var client = new HttpClient();
-        var nullabilityInfoContext = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs");
-        nullabilityInfoContext = nullabilityInfoContext.Replace("public sealed class", "sealed class");
-        await OverWrite(nullabilityInfoContext, "NullabilityInfoContext.cs.pp");
-        var nullabilityInfo = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
+        ["public enum"] = "enum",
+        ["public sealed class"] = "sealed class",
+    };
 
-        nullabilityInfo = $@"#nullable enable
-{nullabilityInfo}";
-        nullabilityInfo = nullabilityInfo
-            .Replace("public enum", "enum")
-            .Replace("public sealed class", "sealed class");
-        await OverWrite(nullabilityInfo, "NullabilityInfo.cs.pp");
+    [Theory]
+    [InlineData("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs")]
+    [InlineData("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs")]
+    public async Task Run(string source)
+    {
+        var uri = new Uri(source);
+        var lines = await ReadLinesAsync(uri);
+
+        lines.Insert(3, "");
+        lines.Insert(3, "#nullable enable");
+
+        var path = Path.Combine(dir, uri.Segments.Last() + ".pp");
+        File.Delete(path);
+        const string lineEnding = "\n";
+        await File.WriteAllTextAsync(path, string.Join(lineEnding, lines) + lineEnding);
     }
 
-    static async Task OverWrite(string? content, string file)
+    static async Task<List<string>> ReadLinesAsync(Uri uri)
     {
-        var path = Path.Combine(dir, file);
-        File.Delete(path);
-        await File.WriteAllTextAsync(path, content);
+        using var client = new HttpClient();
+        await using var stream = await client.GetStreamAsync(uri);
+        using var streamReader = new StreamReader(stream);
+        string line;
+        var lines = new List<string>();
+        while ((line = await streamReader.ReadLineAsync()) != null)
+        {
+            foreach (var (original, replacement) in replacements)
+            {
+                line = line.Replace(original, replacement);
+            }
+            lines.Add(line);
+        }
+        return lines;
     }
 }

@@ -103,9 +103,10 @@ namespace System.Reflection
 <!-- snippet: NullabilityInfo.cs.pp -->
 <a id='snippet-NullabilityInfo.cs.pp'></a>
 ```pp
-#nullable enable
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
+
+#nullable enable
 
 using System.Collections.ObjectModel;
 
@@ -169,7 +170,7 @@ namespace System.Reflection
     }
 }
 ```
-<sup><a href='/src/NullabilityInfo/NullabilityInfo.cs.pp#L1-L65' title='Snippet source file'>snippet source</a> | <a href='#snippet-NullabilityInfo.cs.pp' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/NullabilityInfo/NullabilityInfo.cs.pp#L1-L66' title='Snippet source file'>snippet source</a> | <a href='#snippet-NullabilityInfo.cs.pp' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
