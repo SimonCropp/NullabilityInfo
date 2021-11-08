@@ -3,6 +3,7 @@
 
 #nullable enable
 
+// ReSharper disable once RedundantUsingDirective
 using System.Collections.ObjectModel;
 
 namespace System.Reflection
