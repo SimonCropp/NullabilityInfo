@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using Xunit;
-
-public class Samples
+﻿public class Samples
 {
     #region Usage
 

@@ -69,7 +69,7 @@ public void Test()
     Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L6-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L3-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
