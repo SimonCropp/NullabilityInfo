@@ -39,5 +39,11 @@ namespace System.Reflection
 
             return true;
         }
+
+        //https://github.com/dotnet/runtime/issues/23493
+        internal static bool IsGenericMethodParameter(this Type target)
+        {
+            return target.IsGenericParameter && target.DeclaringMethod != null;
+        }
     }
 }

@@ -207,7 +207,7 @@ namespace System.Reflection
 
             if (setter != null)
             {
-                CheckNullabilityAttributes(nullability, setter.GetParameters()[^1].GetCustomAttributesData());
+                CheckNullabilityAttributes(nullability, setter.GetParameters().Last().GetCustomAttributesData());
             }
             else
             {
@@ -489,7 +489,7 @@ namespace System.Reflection
             Debug.Assert(genericParameter.IsGenericParameter);
 
             if (reflectedType is not null
-                && !genericParameter.IsGenericMethodParameter
+                && !genericParameter.IsGenericMethodParameter()
                 && TryUpdateGenericTypeParameterNullabilityFromReflectedType(nullability, genericParameter, reflectedType, reflectedType))
             {
                 return true;
@@ -515,7 +515,7 @@ namespace System.Reflection
 
         private bool TryUpdateGenericTypeParameterNullabilityFromReflectedType(NullabilityInfo nullability, Type genericParameter, Type context, Type reflectedType)
         {
-            Debug.Assert(genericParameter.IsGenericParameter && !genericParameter.IsGenericMethodParameter);
+            Debug.Assert(genericParameter.IsGenericParameter && !genericParameter.IsGenericMethodParameter());
 
             Type contextTypeDefinition = context.IsGenericType && !context.IsGenericTypeDefinition ? context.GetGenericTypeDefinition() : context;
             if (genericParameter.DeclaringType == contextTypeDefinition)

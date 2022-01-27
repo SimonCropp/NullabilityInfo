@@ -10,8 +10,12 @@
 
         nullabilityInfoContext = $@"#nullable enable
 {nullabilityInfoContext}";
-        nullabilityInfoContext = nullabilityInfoContext.Replace("public sealed class", "sealed class");
+        nullabilityInfoContext = nullabilityInfoContext
+            .Replace("public sealed class", "sealed class")
+            .Replace(".IsGenericMethodParameter", ".IsGenericMethodParameter()")
+            .Replace("[^1]", ".Last()");
         await OverWrite(nullabilityInfoContext, "NullabilityInfoContext.cs.pp");
+
         var nullabilityInfo = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
 
         nullabilityInfo = $@"#nullable enable
