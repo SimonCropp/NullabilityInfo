@@ -1,4 +1,6 @@
-﻿public class Samples
+﻿using Xunit;
+
+public class Samples
 {
     #region Usage
 

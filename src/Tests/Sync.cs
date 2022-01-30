@@ -1,4 +1,8 @@
-﻿public class Sync
+﻿using System.Net.Http;
+using VerifyTests;
+using Xunit;
+
+public class Sync
 {
     static string dir = Path.Combine(AttributeReader.GetSolutionDirectory(typeof(Sync).Assembly), "NullabilityInfo");
 
