@@ -1,7 +1,8 @@
 # <img src="/src/icon.png" height="30px"> NullabilityInfo
 
 [![Build status](https://ci.appveyor.com/api/projects/status/636i70gvxfuwdq38?svg=true)](https://ci.appveyor.com/project/SimonCropp/NullabilityInfo)
-[![NuGet Status](https://img.shields.io/nuget/v/NullabilityInfo.svg)](https://www.nuget.org/packages/NullabilityInfo/)
+[![Nullability.Source NuGet Status](https://img.shields.io/nuget/v/Nullability.Source.svg?label=Nullability.Source)](https://www.nuget.org/packages/Nullability.Source/)
+[![Nullability NuGet Status](https://img.shields.io/nuget/v/Nullability.svg?label=Nullability)](https://www.nuget.org/packages/Nullability/)
 
 Exposes top-level nullability information from reflection.
 
