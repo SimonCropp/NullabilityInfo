@@ -7,6 +7,5 @@
     <Compile Include="..\NullabilityInfo\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
     <Compile Include="..\NullabilityInfo\NullabilityInfo.cs.pp" Link="NullabilityInfo.cs" />
     <Compile Include="..\NullabilityInfo\NullabilityInfoContext.cs.pp" Link="NullabilityInfoContext.cs" />
-    <Compile Include="..\NullabilityInfo\Patching.cs.pp" Link="Patching.cs" />
   </ItemGroup>
 </Project>

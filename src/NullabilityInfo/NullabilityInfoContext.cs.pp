@@ -442,7 +442,7 @@ namespace System.Reflection
             Type? type = member.DeclaringType;
             if ((type != null) && type.IsGenericType && !type.IsGenericTypeDefinition)
             {
-                return type.GetGenericTypeDefinition().GetMemberWithSameMetadataDefinitionAs(member);
+                return NullabilityInfoExtensions.GetMemberWithSameMetadataDefinitionAs(type.GetGenericTypeDefinition(), member);
             }
 
             return member;
