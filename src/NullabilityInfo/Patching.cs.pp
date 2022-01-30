@@ -21,19 +21,15 @@ namespace System.Reflection
         //https://github.com/dotnet/runtime/blob/main/src/coreclr/System.Private.CoreLib/src/System/Reflection/MemberInfo.Internal.cs
         static bool HasSameMetadataDefinitionAs(this MemberInfo target, MemberInfo other)
         {
-            if (target.MetadataToken != other.MetadataToken)
-                return false;
-
-            if (!target.Module.Equals(other.Module))
-                return false;
-
-            return true;
+            return target.MetadataToken == other.MetadataToken &&
+                   target.Module.Equals(other.Module);
         }
 
         //https://github.com/dotnet/runtime/issues/23493
         internal static bool IsGenericMethodParameter(this Type target)
         {
-            return target.IsGenericParameter && target.DeclaringMethod != null;
+            return target.IsGenericParameter &&
+                   target.DeclaringMethod != null;
         }
     }
 }
