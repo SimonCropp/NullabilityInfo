@@ -3,6 +3,9 @@
     <TargetFrameworks>net5;net6;net48</TargetFrameworks>
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+    <TargetFrameworks>net5;net6</TargetFrameworks>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Nullability.Source.Tests\Target.cs" Link="Target.cs" />
     <PackageReference Include="Verify.Xunit" Version="15.1.1" />

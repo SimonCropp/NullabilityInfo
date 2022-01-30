@@ -3,6 +3,9 @@
     <TargetFrameworks>net5;net6;net48</TargetFrameworks>
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+    <TargetFrameworks>net5;net6</TargetFrameworks>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Nullability.Source\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
     <Compile Include="..\Nullability.Source\NullabilityInfo.cs.pp" Link="NullabilityInfo.cs" Condition="$(TargetFramework) != 'net6'" />
