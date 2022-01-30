@@ -2,11 +2,6 @@
 
 namespace System.Reflection
 {
-    class SR
-    {
-        public static string NullabilityInfoContext_NotSupported = "NullabilityInfoContext is not supported";
-    }
-
     internal static partial class NullabilityInfoExtensions
     {
         internal static MemberInfo GetMemberWithSameMetadataDefinitionAs(this Type type, MemberInfo member)

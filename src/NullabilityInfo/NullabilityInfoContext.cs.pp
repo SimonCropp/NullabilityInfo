@@ -277,7 +277,7 @@ namespace System.Reflection
         {
             if (!IsSupported)
             {
-                throw new InvalidOperationException(SR.NullabilityInfoContext_NotSupported);
+                throw new InvalidOperationException("NullabilityInfoContext is not supported");
             }
         }
 
