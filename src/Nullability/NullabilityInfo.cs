@@ -3,14 +3,18 @@
 
 using System.Collections.ObjectModel;
 
+
+using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
+using NullabilityInfo = Nullability.NullabilityInfoEx;
+using NullabilityState = Nullability.NullabilityStateEx;
 namespace Nullability
 {
     /// <summary>
     /// A class that represents nullability info
     /// </summary>
-    public sealed class NullabilityInfo
+    public sealed class NullabilityInfoEx
     {
-        internal NullabilityInfo(Type type, NullabilityState readState, NullabilityState writeState,
+        internal NullabilityInfoEx(Type type, NullabilityState readState, NullabilityState writeState,
             NullabilityInfo? elementType, NullabilityInfo[] typeArguments)
         {
             Type = type;
@@ -46,7 +50,7 @@ namespace Nullability
     /// <summary>
     /// An enum that represents nullability state
     /// </summary>
-    public enum NullabilityState
+    public enum NullabilityStateEx
     {
         /// <summary>
         /// Nullability context not enabled (oblivious)

@@ -5,13 +5,17 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
+
+using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
+using NullabilityInfo = Nullability.NullabilityInfoEx;
+using NullabilityState = Nullability.NullabilityStateEx;
 namespace Nullability
 {
     /// <summary>
     /// Provides APIs for populating nullability information/context from reflection members:
     /// <see cref="ParameterInfo"/>, <see cref="FieldInfo"/>, <see cref="PropertyInfo"/> and <see cref="EventInfo"/>.
     /// </summary>
-    public sealed class NullabilityInfoContext
+    public sealed class NullabilityInfoContextEx
     {
         private const string CompilerServicesNameSpace = "System.Runtime.CompilerServices";
         private readonly Dictionary<Module, NotAnnotatedStatus> _publicOnlyModules = new();

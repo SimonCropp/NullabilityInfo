@@ -3,26 +3,35 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/636i70gvxfuwdq38?svg=true)](https://ci.appveyor.com/project/SimonCropp/NullabilityInfo)
 [![NuGet Status](https://img.shields.io/nuget/v/NullabilityInfo.svg)](https://www.nuget.org/packages/NullabilityInfo/)
 
-Code-only package that exposes top-level nullability information from reflection.
+Exposes top-level nullability information from reflection.
 
-This feature is [coming in net6](https://github.com/dotnet/runtime/issues/29723). This package exposes the APIs to lower runtime. It supports `netstandard2.0` and up.
+This feature is [coming in net6](https://github.com/dotnet/runtime/issues/29723). This project exposes the APIs to lower runtime. It supports `netstandard2.0` and up.
 
-Designed to be compatible for libraries that are targeting multiple frameworks including `net6`.
+This project ships two packages:
+
+
+## NullabilityInfo
+
+https://nuget.org/packages/NullabilityInfo/
+
+A source-only nuget designed to be compatible for libraries that are targeting multiple frameworks including `net6`. In `net5` and below the source files shiped in thsi nuget are used. In `net6` and up the types from `System.Runtime.dll` are used.
+
+
+## Nullability
+
+https://nuget.org/packages/Nullability/
+
+A traditiona nuget that ships a single assembly `Nullability.dll`. Since this project syncs with the cyrrent master from https://github.com/dotnet/runtime, it contains fixes that may not be included in the currently `System.Runtime.dll`. Use the Nullability package to get those fixes.
 
 
 ## Copyright / Licensing
 
 The csproj and nuget config that builds the package is under MIT.
 
-The cs files inside the nuget are also MIT but are [Copyright (c) .NET Foundation and Contributors](https://github.com/dotnet/runtime/blob/main/LICENSE.TXT)
+The content of the nugets are also MIT but are [Copyright (c) .NET Foundation and Contributors](https://github.com/dotnet/runtime/blob/main/LICENSE.TXT)
 
 
-## NuGet package
-
-https://nuget.org/packages/NullabilityInfo/
-
-
-## Usage
+## Uasge
 
 
 ### Example target class
@@ -39,12 +48,13 @@ class Target
     public Dictionary<string, object?> GenericField;
 }
 ```
-<sup><a href='/src/Tests/Target.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/NullabilityInfo.Tests/Target.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
 ### NullabilityInfoContext
 
+From the NullabilityInfo package
 <!-- snippet: Usage -->
 <a id='snippet-usage'></a>
 ```cs
@@ -69,7 +79,7 @@ public void Test()
     Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/NullabilityInfo.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

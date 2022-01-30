@@ -2,6 +2,10 @@
 
 using System.Collections.Concurrent;
 
+
+using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
+using NullabilityInfo = Nullability.NullabilityInfoEx;
+using NullabilityState = Nullability.NullabilityStateEx;
 namespace Nullability
 {
     /// <summary>

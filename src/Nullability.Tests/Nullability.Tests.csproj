@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net5;net6;net48</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\NullabilityInfo.Tests\Target.cs" Link="Target.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Verify.Xunit" Version="15.1.1" />
+    <PackageReference Include="Xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.64" PrivateAssets="all" />
+    <ProjectReference Include="..\Nullability\Nullability.csproj" />
+  </ItemGroup>
+</Project>

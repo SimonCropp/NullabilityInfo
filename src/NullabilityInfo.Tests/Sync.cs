@@ -33,17 +33,33 @@ public class Sync
 
     static void WriteSourceLibFiles(string infoContext, string info)
     {
-        infoContext=  infoContext.Replace("namespace System.Reflection", "namespace Nullability");
+        infoContext= FixNames(infoContext)
+            .Replace("class NullabilityInfoContext", "class NullabilityInfoContextEx");
         OverWriteLib(infoContext, "NullabilityInfoContext.cs");
 
         var extensions = File.ReadAllText(Path.Combine(sourceOnlyDir, "NullabilityInfoExtensions.cs.pp"));
-        extensions = extensions
-            .Replace("namespace System.Reflection", "namespace Nullability")
+        extensions = FixNames(extensions)
             .Replace("    internal", "    public");
         OverWriteLib(extensions, "NullabilityInfoExtensions.cs");
 
-        info = info.Replace("namespace System.Reflection", "namespace Nullability");
+        info = FixNames(info)
+            .Replace("class NullabilityInfo", "class NullabilityInfoEx")
+            .Replace("internal NullabilityInfo(", "internal NullabilityInfoEx(")
+            .Replace("public enum NullabilityState", "public enum NullabilityStateEx");
+
         OverWriteLib(info, "NullabilityInfo.cs");
+    }
+
+    static string FixNames(string extensions)
+    {
+        return extensions
+            .Replace(
+                "namespace System.Reflection",
+                @"
+using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
+using NullabilityInfo = Nullability.NullabilityInfoEx;
+using NullabilityState = Nullability.NullabilityStateEx;
+namespace Nullability");
     }
 
     static void OverWriteLib(string? content, string file)
