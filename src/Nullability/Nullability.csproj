@@ -2,6 +2,9 @@
   <PropertyGroup>
     <TargetFrameworks>net5;netstandard2.0</TargetFrameworks>
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
+    <DefineConstants>$(DefineConstants);NullabilityLib</DefineConstants>
+    <Description>Exposes top-level nullability information from reflection. Same API as net6, but can be consumed by any runtime supporting netstandard2.0.</Description>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ProjectDefaults" Version="1.0.64" PrivateAssets="all" />

@@ -5,7 +5,6 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>NullabilityInfo, Nullable</PackageTags>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <Description>Code-only package that exposes top-level nullability information from reflection. Same API as net6, but can be consumed by any runtime supporting netstandard2.0.</Description>
     <SignAssembly>false</SignAssembly>
     <NoWarn>CS8600;CS8602;CS8604;IDE0049;IDE0007;CS1591</NoWarn>
     <langVersion>10</langVersion>

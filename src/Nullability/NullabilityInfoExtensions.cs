@@ -1,20 +1,20 @@
-﻿#nullable enable
+#nullable enable
 
 using System.Collections.Concurrent;
 
-namespace System.Reflection
+namespace Nullability
 {
     /// <summary>
     /// Static and thread safe wrapper around <see cref="NullabilityInfoContext"/>.
     /// </summary>
-    internal static class NullabilityInfoExtensions
+    public static class NullabilityInfoExtensions
     {
         static ConcurrentDictionary<ParameterInfo, NullabilityInfo> parameterCache = new();
         static ConcurrentDictionary<PropertyInfo, NullabilityInfo> propertyCache = new();
         static ConcurrentDictionary<EventInfo, NullabilityInfo> eventCache = new();
         static ConcurrentDictionary<FieldInfo, NullabilityInfo> fieldCache = new();
 
-        internal static NullabilityInfo GetNullabilityInfo(this MemberInfo info)
+        public static NullabilityInfo GetNullabilityInfo(this MemberInfo info)
         {
             if (info is PropertyInfo propertyInfo)
             {
@@ -34,18 +34,18 @@ namespace System.Reflection
             throw new ArgumentException($"Unsuported type:{info.GetType().FullName}");
         }
 
-        internal static NullabilityState GetNullability(this MemberInfo info)
+        public static NullabilityState GetNullability(this MemberInfo info)
         {
             return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
-        internal static bool IsNullable(this MemberInfo info)
+        public static bool IsNullable(this MemberInfo info)
         {
             var nullability = info.GetNullabilityInfo();
             return IsNullable(info.Name, nullability);
         }
 
-        internal static NullabilityInfo GetNullabilityInfo(this FieldInfo info)
+        public static NullabilityInfo GetNullabilityInfo(this FieldInfo info)
         {
             return fieldCache.GetOrAdd(info, inner =>
             {
@@ -54,18 +54,18 @@ namespace System.Reflection
             });
         }
 
-        internal static NullabilityState GetNullability(this FieldInfo info)
+        public static NullabilityState GetNullability(this FieldInfo info)
         {
             return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
-        internal static bool IsNullable(this FieldInfo info)
+        public static bool IsNullable(this FieldInfo info)
         {
             var nullability = info.GetNullabilityInfo();
             return IsNullable(info.Name, nullability);
         }
 
-        internal static NullabilityInfo GetNullabilityInfo(this EventInfo info)
+        public static NullabilityInfo GetNullabilityInfo(this EventInfo info)
         {
             return eventCache.GetOrAdd(info, inner =>
             {
@@ -74,18 +74,18 @@ namespace System.Reflection
             });
         }
 
-        internal static NullabilityState GetNullability(this EventInfo info)
+        public static NullabilityState GetNullability(this EventInfo info)
         {
             return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
-        internal static bool IsNullable(this EventInfo info)
+        public static bool IsNullable(this EventInfo info)
         {
             var nullability = info.GetNullabilityInfo();
             return IsNullable(info.Name, nullability);
         }
 
-        internal static NullabilityInfo GetNullabilityInfo(this PropertyInfo info)
+        public static NullabilityInfo GetNullabilityInfo(this PropertyInfo info)
         {
             return propertyCache.GetOrAdd(info, inner =>
             {
@@ -94,18 +94,18 @@ namespace System.Reflection
             });
         }
 
-        internal static NullabilityState GetNullability(this PropertyInfo info)
+        public static NullabilityState GetNullability(this PropertyInfo info)
         {
             return GetReadOrWriteState(info.Name, info.GetNullabilityInfo());
         }
 
-        internal static bool IsNullable(this PropertyInfo info)
+        public static bool IsNullable(this PropertyInfo info)
         {
             var nullability = info.GetNullabilityInfo();
             return IsNullable(info.Name, nullability);
         }
 
-        internal static NullabilityInfo GetNullabilityInfo(this ParameterInfo info)
+        public static NullabilityInfo GetNullabilityInfo(this ParameterInfo info)
         {
             return parameterCache.GetOrAdd(info, inner =>
             {
@@ -114,12 +114,12 @@ namespace System.Reflection
             });
         }
 
-        internal static NullabilityState GetNullability(this ParameterInfo info)
+        public static NullabilityState GetNullability(this ParameterInfo info)
         {
             return GetReadOrWriteState(info.Name!, info.GetNullabilityInfo());
         }
 
-        internal static bool IsNullable(this ParameterInfo info)
+        public static bool IsNullable(this ParameterInfo info)
         {
             var nullability = info.GetNullabilityInfo();
             return IsNullable(info.Name!, nullability);
@@ -158,7 +158,7 @@ namespace System.Reflection
         }
 
         //Patching
-        internal static MemberInfo GetMemberWithSameMetadataDefinitionAs(Type type, MemberInfo member)
+        public static MemberInfo GetMemberWithSameMetadataDefinitionAs(Type type, MemberInfo member)
         {
             const BindingFlags all = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
             foreach (var info in type.GetMembers(all))
@@ -180,7 +180,7 @@ namespace System.Reflection
         }
 
         //https://github.com/dotnet/runtime/issues/23493
-        internal static bool IsGenericMethodParameter(this Type target)
+        public static bool IsGenericMethodParameter(this Type target)
         {
             return target.IsGenericParameter &&
                    target.DeclaringMethod != null;

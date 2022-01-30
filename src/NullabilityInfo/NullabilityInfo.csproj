@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net5</TargetFrameworks>
     <NuSpecFile>NullabilityInfo.nuspec</NuSpecFile>
+    <Description>Code-only package that exposes top-level nullability information from reflection. Same API as net6, but can be consumed by any runtime supporting netstandard2.0.</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ProjectDefaults" Version="1.0.64" PrivateAssets="all" />
