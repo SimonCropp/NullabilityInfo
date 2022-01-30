@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net5;netstandard2.0</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Nullability.Source\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
+    <Compile Include="..\Nullability.Source\NullabilityInfo.cs.pp" Link="NullabilityInfo.cs" />
+    <Compile Include="..\Nullability.Source\NullabilityInfoContext.cs.pp" Link="NullabilityInfoContext.cs" />
+  </ItemGroup>
+</Project>

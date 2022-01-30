@@ -4,9 +4,7 @@
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\NullabilityInfo.Tests\Target.cs" Link="Target.cs" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="..\Nullability.Source.Tests\Target.cs" Link="Target.cs" />
     <PackageReference Include="Verify.Xunit" Version="15.1.1" />
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" PrivateAssets="all" />

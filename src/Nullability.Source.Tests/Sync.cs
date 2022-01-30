@@ -5,7 +5,7 @@ using Xunit;
 public class Sync
 {
     static string solutionDir = AttributeReader.GetSolutionDirectory();
-    static string sourceOnlyDir = Path.Combine(solutionDir, "NullabilityInfo");
+    static string sourceOnlyDir = Path.Combine(solutionDir, "Nullability.Source");
     static string libDir = Path.Combine(solutionDir, "Nullability");
 
     [Fact]

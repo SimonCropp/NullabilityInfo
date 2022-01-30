@@ -48,7 +48,7 @@ class Target
     public Dictionary<string, object?> GenericField;
 }
 ```
-<sup><a href='/src/NullabilityInfo.Tests/Target.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Source.Tests/Target.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -79,7 +79,7 @@ public void Test()
     Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/NullabilityInfo.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -180,7 +180,7 @@ namespace System.Reflection
     }
 }
 ```
-<sup><a href='/src/NullabilityInfo/NullabilityInfo.cs.pp#L1-L66' title='Snippet source file'>snippet source</a> | <a href='#snippet-NullabilityInfo.cs.pp' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Source/NullabilityInfo.cs.pp#L1-L66' title='Snippet source file'>snippet source</a> | <a href='#snippet-NullabilityInfo.cs.pp' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

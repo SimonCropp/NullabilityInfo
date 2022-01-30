@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>NullabilityInfo</id>
+    <id>Nullability.Source</id>
     <version>$version$</version>
     <authors>$authors$</authors>
     <developmentDependency>true</developmentDependency>
@@ -20,10 +20,10 @@
     <file src="../icon.png" target="icon.png" />
 
     <file src="*.pp"
-          target="contentFiles/cs/netstandard2.0/NullabilityInfo/"/>
+          target="contentFiles/cs/netstandard2.0/Nullability.Source/"/>
 
     <!-- .NET 6 already has NullabilityInfo -->
     <file src="NullabilityInfoExtensions.cs.pp"
-          target="contentFiles/cs/net6.0/NullabilityInfo/"/>
+          target="contentFiles/cs/net6.0/Nullability.Source/"/>
   </files>
 </package>

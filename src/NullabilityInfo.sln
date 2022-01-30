@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\readme.md = ..\readme.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullabilityInfo", "NullabilityInfo\NullabilityInfo.csproj", "{698FB675-3480-4107-8CAE-51452C6138CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullability.Source", "Nullability.Source\Nullability.Source.csproj", "{698FB675-3480-4107-8CAE-51452C6138CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullabilityInfoUsage", "NullabilityInfoUsage\NullabilityInfoUsage.csproj", "{B4BAD33E-CF70-448F-AAF1-ED8941E5C875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullability.Source.Usage", "Nullability.Source.Usage\Nullability.Source.Usage.csproj", "{B4BAD33E-CF70-448F-AAF1-ED8941E5C875}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullability", "Nullability\Nullability.csproj", "{811A10AA-10F6-4279-986C-7A6FCA3EA43C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullabilityInfo.Tests", "NullabilityInfo.Tests\NullabilityInfo.Tests.csproj", "{CA1869D1-4531-40C7-AE55-5885F4DD8448}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullability.Source.Tests", "Nullability.Source.Tests\Nullability.Source.Tests.csproj", "{CA1869D1-4531-40C7-AE55-5885F4DD8448}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullability.Tests", "Nullability.Tests\Nullability.Tests.csproj", "{7CE517ED-600A-4F6D-B452-308F6FE0CA35}"
 EndProject
