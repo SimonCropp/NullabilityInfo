@@ -22,7 +22,7 @@ A source-only nuget designed to be compatible for libraries that are targeting m
 
 https://nuget.org/packages/Nullability/
 
-A traditiona nuget that ships a single assembly `Nullability.dll`. Since this project syncs with the cyrrent master from https://github.com/dotnet/runtime, it contains fixes that may not be included in the currently `System.Runtime.dll`. Use the Nullability package to get those fixes.
+A traditional nuget that ships a single assembly `Nullability.dll`. Since this project syncs with the current master from https://github.com/dotnet/runtime, it contains fixes that may not be included in the currently `System.Runtime.dll`. Use the Nullability package to get those fixes.
 
 To prevent name conflicts the following has been changed:
 
