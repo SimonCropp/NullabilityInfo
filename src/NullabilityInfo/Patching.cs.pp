@@ -7,7 +7,7 @@ namespace System.Reflection
         internal static MemberInfo GetMemberWithSameMetadataDefinitionAs(this Type type, MemberInfo member)
         {
             const BindingFlags all = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
-            foreach (MemberInfo info in type.GetMembers(all))
+            foreach (var info in type.GetMembers(all))
             {
                 if (info.HasSameMetadataDefinitionAs(member))
                 {
