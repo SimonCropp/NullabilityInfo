@@ -9,9 +9,9 @@
         var nullabilityInfoContext = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs");
 
         nullabilityInfoContext = $@"#nullable enable
+using System.Linq;
 {nullabilityInfoContext}";
-        nullabilityInfoContext = nullabilityInfoContext
-            .Replace("public sealed class", "sealed class")
+        nullabilityInfoContext = MakeInternal(nullabilityInfoContext)
             .Replace(".IsGenericMethodParameter", ".IsGenericMethodParameter()")
             .Replace("[^1]", ".Last()");
         await OverWrite(nullabilityInfoContext, "NullabilityInfoContext.cs.pp");
@@ -19,11 +19,17 @@
         var nullabilityInfo = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
 
         nullabilityInfo = $@"#nullable enable
+using System.Linq;
 {nullabilityInfo}";
-        nullabilityInfo = nullabilityInfo
+        nullabilityInfo = MakeInternal(nullabilityInfo);
+        await OverWrite(nullabilityInfo, "NullabilityInfo.cs.pp");
+    }
+
+    static string MakeInternal(string source)
+    {
+        return source
             .Replace("public enum", "enum")
             .Replace("public sealed class", "sealed class");
-        await OverWrite(nullabilityInfo, "NullabilityInfo.cs.pp");
     }
 
     static async Task OverWrite(string? content, string file)
