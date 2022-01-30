@@ -4,29 +4,37 @@ using Xunit;
 
 public class Sync
 {
-    static string dir = Path.Combine(AttributeReader.GetSolutionDirectory(typeof(Sync).Assembly), "NullabilityInfo");
+    static string solutionDir = AttributeReader.GetSolutionDirectory();
+    static string dir = Path.Combine(solutionDir, "NullabilityInfo");
 
     [Fact]
     public async Task Run()
     {
         var client = new HttpClient();
-        var nullabilityInfoContext = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs");
+        var infoContext = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfoContext.cs");
 
-        nullabilityInfoContext = $@"#nullable enable
+        infoContext = infoContext
+            .Replace("[^1]", ".Last()")
+            .Replace(".IsGenericMethodParameter", ".IsGenericMethodParameter()");
+
+        var info = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
+
+        WriteSourceOnlyFiles(infoContext, info);
+    }
+
+    static void WriteSourceOnlyFiles(string infoContext, string info)
+    {
+        infoContext = $@"#nullable enable
 using System.Linq;
-{nullabilityInfoContext}";
-        nullabilityInfoContext = MakeInternal(nullabilityInfoContext)
-            .Replace(".IsGenericMethodParameter", ".IsGenericMethodParameter()")
-            .Replace("[^1]", ".Last()");
-        await OverWrite(nullabilityInfoContext, "NullabilityInfoContext.cs.pp");
+{infoContext}";
+        infoContext = MakeInternal(infoContext);
+        OverWrite(infoContext, "NullabilityInfoContext.cs.pp");
 
-        var nullabilityInfo = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
-
-        nullabilityInfo = $@"#nullable enable
+        info = $@"#nullable enable
 using System.Linq;
-{nullabilityInfo}";
-        nullabilityInfo = MakeInternal(nullabilityInfo);
-        await OverWrite(nullabilityInfo, "NullabilityInfo.cs.pp");
+{info}";
+        info = MakeInternal(info);
+        OverWrite(info, "NullabilityInfo.cs.pp");
     }
 
     static string MakeInternal(string source)
@@ -36,10 +44,10 @@ using System.Linq;
             .Replace("public sealed class", "sealed class");
     }
 
-    static async Task OverWrite(string? content, string file)
+    static void OverWrite(string? content, string file)
     {
         var path = Path.Combine(dir, file);
         File.Delete(path);
-        await File.WriteAllTextAsync(path, content);
+        File.WriteAllText(path, content);
     }
 }
