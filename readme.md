@@ -62,7 +62,7 @@ class Target
 From the Nullability.Source package
 
 <!-- snippet: SourceUsage -->
-<a id='snippet-usage'></a>
+<a id='snippet-sourceusage'></a>
 ```cs
 [Fact]
 public void Test()
@@ -85,7 +85,7 @@ public void Test()
     Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-sourceusage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -103,21 +103,21 @@ public void Test()
     var arrayField = type.GetField("ArrayField");
     var genericField = type.GetField("GenericField");
 
-    var context = new NullabilityInfoContext();
+    var context = new NullabilityInfoContextEx();
 
     var arrayInfo = context.Create(arrayField);
 
-    Assert.Equal(NullabilityState.NotNull, arrayInfo.ReadState);
-    Assert.Equal(NullabilityState.Nullable, arrayInfo.ElementType.ReadState);
+    Assert.Equal(NullabilityStateEx.NotNull, arrayInfo.ReadState);
+    Assert.Equal(NullabilityStateEx.Nullable, arrayInfo.ElementType.ReadState);
 
     var genericInfo = context.Create(genericField);
 
-    Assert.Equal(NullabilityState.NotNull, genericInfo.ReadState);
-    Assert.Equal(NullabilityState.NotNull, genericInfo.GenericTypeArguments[0].ReadState);
-    Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
+    Assert.Equal(NullabilityStateEx.NotNull, genericInfo.ReadState);
+    Assert.Equal(NullabilityStateEx.NotNull, genericInfo.GenericTypeArguments[0].ReadState);
+    Assert.Equal(NullabilityStateEx.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Tests/Samples.cs#L6-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
