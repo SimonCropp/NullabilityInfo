@@ -2,7 +2,7 @@
 
 public class Samples
 {
-    #region Usage
+    #region SourceUsage
 
     [Fact]
     public void Test()

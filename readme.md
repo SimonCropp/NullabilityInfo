@@ -10,9 +10,9 @@ This feature is [coming in net6](https://github.com/dotnet/runtime/issues/29723)
 This project ships two packages:
 
 
-## NullabilityInfo
+## Nullability.Source
 
-https://nuget.org/packages/NullabilityInfo/
+https://nuget.org/packages/Nullability.Source/
 
 A source-only nuget designed to be compatible for libraries that are targeting multiple frameworks including `net6`. In `net5` and below the source files shiped in thsi nuget are used. In `net6` and up the types from `System.Runtime.dll` are used.
 
@@ -22,6 +22,11 @@ A source-only nuget designed to be compatible for libraries that are targeting m
 https://nuget.org/packages/Nullability/
 
 A traditiona nuget that ships a single assembly `Nullability.dll`. Since this project syncs with the cyrrent master from https://github.com/dotnet/runtime, it contains fixes that may not be included in the currently `System.Runtime.dll`. Use the Nullability package to get those fixes.
+
+To prevent name conflicts the following has been changed:
+
+ * `System.Reflection.NullabilityStateEx` => `Nullability.NullabilityStateEx`
+ * `System.Reflection.NullabilityInfoContext` => `Nullability.NullabilityInfoContextEx`
 
 
 ## Copyright / Licensing
@@ -54,7 +59,40 @@ class Target
 
 ### NullabilityInfoContext
 
-From the NullabilityInfo package
+From the Nullability.Source package
+
+<!-- snippet: SourceUsage -->
+<a id='snippet-usage'></a>
+```cs
+[Fact]
+public void Test()
+{
+    var type = typeof(Target);
+    var arrayField = type.GetField("ArrayField");
+    var genericField = type.GetField("GenericField");
+
+    var context = new NullabilityInfoContext();
+
+    var arrayInfo = context.Create(arrayField);
+
+    Assert.Equal(NullabilityState.NotNull, arrayInfo.ReadState);
+    Assert.Equal(NullabilityState.Nullable, arrayInfo.ElementType.ReadState);
+
+    var genericInfo = context.Create(genericField);
+
+    Assert.Equal(NullabilityState.NotNull, genericInfo.ReadState);
+    Assert.Equal(NullabilityState.NotNull, genericInfo.GenericTypeArguments[0].ReadState);
+    Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
+}
+```
+<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L5-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
+### NullabilityInfoContextEx
+
+From the Nullability package
+
 <!-- snippet: Usage -->
 <a id='snippet-usage'></a>
 ```cs

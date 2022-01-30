@@ -3,7 +3,7 @@ using Xunit;
 
 public class Samples
 {
-    #region UsageEx
+    #region Usage
 
     [Fact]
     public void Test()
