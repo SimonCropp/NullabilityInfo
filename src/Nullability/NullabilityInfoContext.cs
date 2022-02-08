@@ -69,11 +69,6 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(ParameterInfo parameterInfo)
         {
-            if (parameterInfo is null)
-            {
-                throw new ArgumentNullException(nameof(parameterInfo));
-            }
-
             EnsureIsSupported();
 
             IList<CustomAttributeData> attributes = parameterInfo.GetCustomAttributesData();
@@ -185,11 +180,6 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(PropertyInfo propertyInfo)
         {
-            if (propertyInfo is null)
-            {
-                throw new ArgumentNullException(nameof(propertyInfo));
-            }
-
             EnsureIsSupported();
 
             MethodInfo? getter = propertyInfo.GetGetMethod(true);
@@ -241,11 +231,6 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(EventInfo eventInfo)
         {
-            if (eventInfo is null)
-            {
-                throw new ArgumentNullException(nameof(eventInfo));
-            }
-
             EnsureIsSupported();
 
             return GetNullabilityInfo(eventInfo, eventInfo.EventHandlerType!, CreateParser(eventInfo.GetCustomAttributesData()));
@@ -261,11 +246,6 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(FieldInfo fieldInfo)
         {
-            if (fieldInfo is null)
-            {
-                throw new ArgumentNullException(nameof(fieldInfo));
-            }
-
             EnsureIsSupported();
 
             IList<CustomAttributeData> attributes = fieldInfo.GetCustomAttributesData();

@@ -25,7 +25,10 @@ public class Sync
                 "return type.GetGenericTypeDefinition().GetMemberWithSameMetadataDefinitionAs(member);",
                 "return NullabilityInfoExtensions.GetMemberWithSameMetadataDefinitionAs(type.GetGenericTypeDefinition(), member);");
 
+        infoContext = infoContext.Replace("!!", "");
+
         var info = await client.GetStringAsync("https://raw.githubusercontent.com/dotnet/runtime/main/src/libraries/System.Private.CoreLib/src/System/Reflection/NullabilityInfo.cs");
+        info = info.Replace("!!", "");
 
         WriteSourceOnlyFiles(infoContext, info);
         WriteSourceLibFiles(infoContext, info);
