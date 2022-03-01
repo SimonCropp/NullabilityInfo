@@ -6,7 +6,7 @@
 
 Exposes top-level nullability information from reflection.
 
-This feature is [coming in net6](https://github.com/dotnet/runtime/issues/29723). This project exposes the APIs to lower runtime. It supports `netstandard2.0` and up.
+This feature is [included in net6](https://github.com/dotnet/runtime/issues/29723). This project exposes the APIs to lower runtime. It supports `netstandard2.0` and up.
 
 This project ships two packages:
 
