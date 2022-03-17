@@ -53,9 +53,8 @@ public class Sync
         OverWriteLib(info, "NullabilityInfo.cs");
     }
 
-    static string FixNames(string extensions)
-    {
-        return extensions
+    static string FixNames(string extensions) =>
+        extensions
             .Replace(
                 "namespace System.Reflection",
                 @"
@@ -63,7 +62,6 @@ using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
 using NullabilityInfo = Nullability.NullabilityInfoEx;
 using NullabilityState = Nullability.NullabilityStateEx;
 namespace Nullability");
-    }
 
     static void OverWriteLib(string? content, string file)
     {
@@ -87,12 +85,10 @@ using System.Linq;
         OverWriteSourceOnly(info, "NullabilityInfo.cs.pp");
     }
 
-    static string MakeInternal(string source)
-    {
-        return source
+    static string MakeInternal(string source) =>
+        source
             .Replace("public enum", "enum")
             .Replace("public sealed class", "sealed class");
-    }
 
     static void OverWriteSourceOnly(string? content, string file)
     {
