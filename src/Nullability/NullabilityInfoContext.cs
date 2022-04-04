@@ -127,7 +127,7 @@ namespace Nullability
             return (MethodInfo)GetMemberMetadataDefinition(method);
         }
 
-        private void CheckNullabilityAttributes(NullabilityInfo nullability, IList<CustomAttributeData> attributes)
+        private static void CheckNullabilityAttributes(NullabilityInfo nullability, IList<CustomAttributeData> attributes)
         {
             var codeAnalysisReadState = NullabilityState.Unknown;
             var codeAnalysisWriteState = NullabilityState.Unknown;
@@ -296,7 +296,7 @@ namespace Nullability
             return false;
         }
 
-        private NotAnnotatedStatus PopulateAnnotationInfo(IList<CustomAttributeData> customAttributes)
+        private static NotAnnotatedStatus PopulateAnnotationInfo(IList<CustomAttributeData> customAttributes)
         {
             foreach (CustomAttributeData attribute in customAttributes)
             {
@@ -393,11 +393,11 @@ namespace Nullability
                     attribute.AttributeType.Namespace == CompilerServicesNameSpace &&
                     attribute.ConstructorArguments.Count == 1)
                 {
-                    return new(attribute.ConstructorArguments[0].Value);
+                    return new NullableAttributeStateParser(attribute.ConstructorArguments[0].Value);
                 }
             }
 
-            return new(null);
+            return new NullableAttributeStateParser(null);
         }
 
         private void TryLoadGenericMetaTypeNullability(MemberInfo memberInfo, NullabilityInfo nullability)
