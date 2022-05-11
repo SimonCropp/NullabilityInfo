@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net5</TargetFrameworks>
+    <TargetFrameworks>net5.0</TargetFrameworks>
     <NuSpecFile>Nullability.Source.nuspec</NuSpecFile>
     <Description>Code-only package that exposes top-level nullability information from reflection. Same API as net6, but can be consumed by any runtime supporting netstandard2.0.</Description>
   </PropertyGroup>
