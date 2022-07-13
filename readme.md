@@ -26,7 +26,7 @@ A traditional nuget that ships a single assembly `Nullability.dll`. Since this p
 
 To prevent name conflicts the following has been changed:
 
- * `System.Reflection.NullabilityStateEx` => `Nullability.NullabilityStateEx`
+ * `System.Reflection.NullabilityState` => `Nullability.NullabilityStateEx`
  * `System.Reflection.NullabilityInfoContext` => `Nullability.NullabilityInfoContextEx`
 
 
