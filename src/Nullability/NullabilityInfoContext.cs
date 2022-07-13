@@ -69,6 +69,8 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(ParameterInfo parameterInfo)
         {
+            
+
             EnsureIsSupported();
 
             IList<CustomAttributeData> attributes = parameterInfo.GetCustomAttributesData();
@@ -180,6 +182,8 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(PropertyInfo propertyInfo)
         {
+            
+
             EnsureIsSupported();
 
             MethodInfo? getter = propertyInfo.GetGetMethod(true);
@@ -231,6 +235,8 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(EventInfo eventInfo)
         {
+            
+
             EnsureIsSupported();
 
             return GetNullabilityInfo(eventInfo, eventInfo.EventHandlerType!, CreateParser(eventInfo.GetCustomAttributesData()));
@@ -246,6 +252,8 @@ namespace Nullability
         /// <returns><see cref="NullabilityInfo" /></returns>
         public NullabilityInfo Create(FieldInfo fieldInfo)
         {
+            
+
             EnsureIsSupported();
 
             IList<CustomAttributeData> attributes = fieldInfo.GetCustomAttributesData();
@@ -321,7 +329,14 @@ namespace Nullability
         private NullabilityInfo GetNullabilityInfo(MemberInfo memberInfo, Type type, NullableAttributeStateParser parser)
         {
             int index = 0;
-            return GetNullabilityInfo(memberInfo, type, parser, ref index);
+            NullabilityInfo nullability = GetNullabilityInfo(memberInfo, type, parser, ref index);
+
+            if (!type.IsValueType && nullability.ReadState != NullabilityState.Unknown)
+            {
+                TryLoadGenericMetaTypeNullability(memberInfo, nullability);
+            }
+
+            return nullability;
         }
 
         private NullabilityInfo GetNullabilityInfo(MemberInfo memberInfo, Type type, NullableAttributeStateParser parser, ref int index)
@@ -375,14 +390,7 @@ namespace Nullability
                 }
             }
 
-            NullabilityInfo nullability = new NullabilityInfo(type, state, state, elementState, genericArgumentsState);
-
-            if (!type.IsValueType && state != NullabilityState.Unknown)
-            {
-                TryLoadGenericMetaTypeNullability(memberInfo, nullability);
-            }
-
-            return nullability;
+            return new NullabilityInfo(type, state, state, elementState, genericArgumentsState);
         }
 
         private static NullableAttributeStateParser CreateParser(IList<CustomAttributeData> customAttributes)

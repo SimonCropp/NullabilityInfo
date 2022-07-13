@@ -18,6 +18,10 @@ public class Sync
             .Replace("[^1]", ".Last()")
             .Replace(".IsGenericMethodParameter", ".IsGenericMethodParameter()")
             .Replace("SR.NullabilityInfoContext_NotSupported", "\"NullabilityInfoContext is not supported\"")
+            .Replace("ArgumentNullException.ThrowIfNull(propertyInfo);", "")
+            .Replace("ArgumentNullException.ThrowIfNull(eventInfo);", "")
+            .Replace("ArgumentNullException.ThrowIfNull(fieldInfo);", "")
+            .Replace("ArgumentNullException.ThrowIfNull(parameterInfo);", "")
             .Replace(
                 "if (info.HasSameMetadataDefinitionAs(member))",
                 "if (NullabilityInfoExtensions.HasSameMetadataDefinitionAs(info,member))")
