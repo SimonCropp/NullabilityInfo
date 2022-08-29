@@ -145,7 +145,7 @@ namespace Nullability
                     else if ((attribute.AttributeType.Name == "MaybeNullAttribute" ||
                             attribute.AttributeType.Name == "MaybeNullWhenAttribute") &&
                             codeAnalysisReadState == NullabilityState.Unknown &&
-                            !nullability.Type.IsValueType)
+                            !IsValueTypeOrValueTypeByRef(nullability.Type))
                     {
                         codeAnalysisReadState = NullabilityState.Nullable;
                     }
@@ -155,7 +155,7 @@ namespace Nullability
                     }
                     else if (attribute.AttributeType.Name == "AllowNullAttribute" &&
                         codeAnalysisWriteState == NullabilityState.Unknown &&
-                        !nullability.Type.IsValueType)
+                        !IsValueTypeOrValueTypeByRef(nullability.Type))
                     {
                         codeAnalysisWriteState = NullabilityState.Nullable;
                     }
@@ -331,7 +331,7 @@ namespace Nullability
             int index = 0;
             NullabilityInfo nullability = GetNullabilityInfo(memberInfo, type, parser, ref index);
 
-            if (!type.IsValueType && nullability.ReadState != NullabilityState.Unknown)
+            if (nullability.ReadState != NullabilityState.Unknown)
             {
                 TryLoadGenericMetaTypeNullability(memberInfo, nullability);
             }
@@ -344,19 +344,22 @@ namespace Nullability
             NullabilityState state = NullabilityState.Unknown;
             NullabilityInfo? elementState = null;
             NullabilityInfo[] genericArgumentsState = Array.Empty<NullabilityInfo>();
-            Type? underlyingType = type;
+            Type underlyingType = type;
 
-            if (type.IsValueType)
+            if (underlyingType.IsByRef || underlyingType.IsPointer)
             {
-                underlyingType = Nullable.GetUnderlyingType(type);
+                underlyingType = underlyingType.GetElementType()!;
+            }
 
-                if (underlyingType != null)
+            if (underlyingType.IsValueType)
+            {
+                if (Nullable.GetUnderlyingType(underlyingType) is { } nullableUnderlyingType)
                 {
+                    underlyingType = nullableUnderlyingType;
                     state = NullabilityState.Nullable;
                 }
                 else
                 {
-                    underlyingType = type;
                     state = NullabilityState.NotNull;
                 }
 
@@ -373,9 +376,9 @@ namespace Nullability
                     state = contextState;
                 }
 
-                if (type.IsArray)
+                if (underlyingType.IsArray)
                 {
-                    elementState = GetNullabilityInfo(memberInfo, type.GetElementType()!, parser, ref index);
+                    elementState = GetNullabilityInfo(memberInfo, underlyingType.GetElementType()!, parser, ref index);
                 }
             }
 
@@ -472,6 +475,12 @@ namespace Nullability
                 {
                     CheckGenericParameters(elementNullability, metaMember, metaType.GetElementType()!, reflectedType);
                 }
+                // We could also follow this branch for metaType.IsPointer, but since pointers must be unmanaged this
+                // will be a no-op regardless
+                else if (metaType.IsByRef)
+                {
+                    CheckGenericParameters(nullability, metaMember, metaType.GetElementType()!, reflectedType);
+                }
             }
         }
 
@@ -482,6 +491,11 @@ namespace Nullability
             if (reflectedType is not null
                 && !genericParameter.IsGenericMethodParameter()
                 && TryUpdateGenericTypeParameterNullabilityFromReflectedType(nullability, genericParameter, reflectedType, reflectedType))
+            {
+                return true;
+            }
+
+            if (IsValueTypeOrValueTypeByRef(nullability.Type))
             {
                 return true;
             }
@@ -553,9 +567,10 @@ namespace Nullability
                     }
                     return count;
                 }
-                if (underlyingType.IsArray)
+
+                if (underlyingType.HasElementType)
                 {
-                    return 1 + CountNullabilityStates(underlyingType.GetElementType()!);
+                    return (underlyingType.IsArray ? 1 : 0) + CountNullabilityStates(underlyingType.GetElementType()!);
                 }
 
                 return type.IsValueType ? 0 : 1;
@@ -564,7 +579,7 @@ namespace Nullability
 
         private bool TryPopulateNullabilityInfo(NullabilityInfo nullability, NullableAttributeStateParser parser, ref int index)
         {
-            bool isValueType = nullability.Type.IsValueType;
+            bool isValueType = IsValueTypeOrValueTypeByRef(nullability.Type);
             if (!isValueType)
             {
                 var state = NullabilityState.Unknown;
@@ -609,6 +624,9 @@ namespace Nullability
                 2 => NullabilityState.Nullable,
                 _ => NullabilityState.Unknown
             };
+
+        private static bool IsValueTypeOrValueTypeByRef(Type type) =>
+            type.IsValueType || ((type.IsByRef || type.IsPointer) && type.GetElementType()!.IsValueType);
 
         private readonly struct NullableAttributeStateParser
         {
