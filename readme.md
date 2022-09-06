@@ -15,7 +15,7 @@ This project ships two packages:
 
 https://nuget.org/packages/Nullability.Source/
 
-A source-only nuget designed to be compatible for libraries that are targeting multiple frameworks including `net6`. In `net5` and below the source files shiped in thsi nuget are used. In `net6` and up the types from `System.Runtime.dll` are used.
+A source-only nuget designed to be compatible for libraries that are targeting multiple frameworks including `net6`. In `net5` and below the source files shipped in this nuget are used. In `net6` and up the types from `System.Runtime.dll` are used.
 
 
 ## Nullability
@@ -37,7 +37,7 @@ The csproj and nuget config that builds the package is under MIT.
 The content of the nugets are also MIT but are [Copyright (c) .NET Foundation and Contributors](https://github.com/dotnet/runtime/blob/main/LICENSE.TXT)
 
 
-## Uasge
+## Usage
 
 
 ### Example target class

@@ -31,7 +31,7 @@ namespace System.Reflection
                 return fieldInfo.GetNullabilityInfo();
             }
 
-            throw new ArgumentException($"Unsuported type:{info.GetType().FullName}");
+            throw new ArgumentException($"Unsupported type:{info.GetType().FullName}");
         }
 
         internal static NullabilityState GetNullability(this MemberInfo info)
