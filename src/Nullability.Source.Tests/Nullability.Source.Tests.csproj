@@ -4,14 +4,14 @@
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Nullability.Source\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
     <Compile Include="..\Nullability.Source\NullabilityInfo.cs.pp" Link="NullabilityInfo.cs" Condition="$(TargetFramework) != 'net6.0'" />
     <Compile Include="..\Nullability.Source\NullabilityInfoContext.cs.pp" Link="NullabilityInfoContext.cs" Condition="$(TargetFramework) != 'net6.0'" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="Verify.Xunit" Version="18.4.0" />
+    <PackageReference Include="Verify.Xunit" Version="19.0.0" />
     <PackageReference Include="Xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
