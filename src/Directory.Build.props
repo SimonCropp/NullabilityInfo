@@ -7,7 +7,7 @@
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <SignAssembly>false</SignAssembly>
     <NoWarn>CS8600;CS8602;CS8604;IDE0049;IDE0007;CS1591</NoWarn>
-    <langVersion>10</langVersion>
+    <LangVersion>11</LangVersion>
     <ImplicitUsings Condition="'$(ImplicitUsings)' == ''">disable</ImplicitUsings>
   </PropertyGroup>
 </Project>
