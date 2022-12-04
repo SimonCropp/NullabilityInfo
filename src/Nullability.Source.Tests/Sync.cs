@@ -44,7 +44,7 @@ public class Sync
             .Replace("class NullabilityInfoContext", "class NullabilityInfoContextEx");
         OverWriteLib(infoContext, "NullabilityInfoContext.cs");
 
-        var extensions = File.ReadAllText(Path.Combine(sourceOnlyDir, "NullabilityInfoExtensions.cs.pp"));
+        var extensions = File.ReadAllText(Path.Combine(sourceOnlyDir, "NullabilityInfoExtensions.cs"));
         extensions = FixNames(extensions)
             .Replace("    internal", "    public");
         OverWriteLib(extensions, "NullabilityInfoExtensions.cs");
@@ -80,13 +80,13 @@ namespace Nullability");
 using System.Linq;
 {infoContext}";
         infoContext = MakeInternal(infoContext);
-        OverWriteSourceOnly(infoContext, "NullabilityInfoContext.cs.pp");
+        OverWriteSourceOnly(infoContext, "NullabilityInfoContext.cs");
 
         info = $@"#nullable enable
 using System.Linq;
 {info}";
         info = MakeInternal(info);
-        OverWriteSourceOnly(info, "NullabilityInfo.cs.pp");
+        OverWriteSourceOnly(info, "NullabilityInfo.cs");
     }
 
     static string MakeInternal(string source) =>

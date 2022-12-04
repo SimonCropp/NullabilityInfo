@@ -7,9 +7,9 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Nullability.Source\NullabilityInfoExtensions.cs.pp" Link="NullabilityInfoExtensions.cs" />
-    <Compile Include="..\Nullability.Source\NullabilityInfo.cs.pp" Link="NullabilityInfo.cs" Condition="$(TargetFramework) != 'net6.0'" />
-    <Compile Include="..\Nullability.Source\NullabilityInfoContext.cs.pp" Link="NullabilityInfoContext.cs" Condition="$(TargetFramework) != 'net6.0'" />
+    <Compile Include="..\Nullability.Source\NullabilityInfoExtensions.cs" Link="NullabilityInfoExtensions.cs" />
+    <Compile Include="..\Nullability.Source\NullabilityInfo.cs" Link="NullabilityInfo.cs" Condition="$(TargetFramework) != 'net6.0'" />
+    <Compile Include="..\Nullability.Source\NullabilityInfoContext.cs" Link="NullabilityInfoContext.cs" Condition="$(TargetFramework) != 'net6.0'" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Verify.Xunit" Version="19.1.0" />
     <PackageReference Include="Xunit" Version="2.4.2" />
