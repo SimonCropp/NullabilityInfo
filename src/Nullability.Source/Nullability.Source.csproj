@@ -5,7 +5,7 @@
     <Description>Code-only package that exposes top-level nullability information from reflection. Same API as net6, but can be consumed by any runtime supporting netstandard2.0.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ProjectDefaults" Version="1.0.97" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.99" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
   </ItemGroup>
   <Target Name="SetPackageDependencies" BeforeTargets="GenerateNuspec">
