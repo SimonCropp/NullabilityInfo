@@ -22,6 +22,7 @@ public class Sync
             .Replace("ArgumentNullException.ThrowIfNull(eventInfo);", "")
             .Replace("ArgumentNullException.ThrowIfNull(fieldInfo);", "")
             .Replace("ArgumentNullException.ThrowIfNull(parameterInfo);", "")
+            .Replace("ReadOnlySpan<ParameterInfo> parameters = metaMethod.GetParametersAsSpan();", "var parameters = metaMethod.GetParameters();")
             .Replace(".GetParametersAsSpan()", ".GetParameters()")
             .Replace(
                 "if (info.HasSameMetadataDefinitionAs(member))",
@@ -73,11 +74,12 @@ public class Sync
         extensions
             .Replace(
                 "namespace System.Reflection",
-                @"
-using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
-using NullabilityInfo = Nullability.NullabilityInfoEx;
-using NullabilityState = Nullability.NullabilityStateEx;
-namespace Nullability");
+                """
+                using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
+                using NullabilityInfo = Nullability.NullabilityInfoEx;
+                using NullabilityState = Nullability.NullabilityStateEx;
+                namespace Nullability
+                """);
 
     static void OverWriteLib(string? content, string file)
     {

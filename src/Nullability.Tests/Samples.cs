@@ -1,5 +1,6 @@
 ﻿using Nullability;
 using Xunit;
+// ReSharper disable NotAccessedField.Local
 
 public class Samples
 {

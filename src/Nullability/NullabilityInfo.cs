@@ -6,7 +6,6 @@ using System.Linq;
 
 using System.Collections.ObjectModel;
 
-
 using NullabilityInfoContext= Nullability.NullabilityInfoContextEx;
 using NullabilityInfo = Nullability.NullabilityInfoEx;
 using NullabilityState = Nullability.NullabilityStateEx;
