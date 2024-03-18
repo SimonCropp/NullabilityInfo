@@ -10,5 +10,7 @@
     <LangVersion>preview</LangVersion>
     <ImplicitUsings Condition="'$(ImplicitUsings)' == ''">disable</ImplicitUsings>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
   </PropertyGroup>
 </Project>
