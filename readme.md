@@ -65,7 +65,7 @@ class Target
 From the Nullability.Source package
 
 <!-- snippet: SourceUsage -->
-<a id='snippet-sourceusage'></a>
+<a id='snippet-SourceUsage'></a>
 ```cs
 [Fact]
 public void Test()
@@ -88,7 +88,7 @@ public void Test()
     Assert.Equal(NullabilityState.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L6-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-sourceusage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Source.Tests/Samples.cs#L6-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-SourceUsage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -97,7 +97,7 @@ public void Test()
 From the Nullability package
 
 <!-- snippet: Usage -->
-<a id='snippet-usage'></a>
+<a id='snippet-Usage'></a>
 ```cs
 [Fact]
 public void Test()
@@ -120,7 +120,7 @@ public void Test()
     Assert.Equal(NullabilityStateEx.Nullable, genericInfo.GenericTypeArguments[1].ReadState);
 }
 ```
-<sup><a href='/src/Nullability.Tests/Samples.cs#L7-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-usage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nullability.Tests/Samples.cs#L7-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-Usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
