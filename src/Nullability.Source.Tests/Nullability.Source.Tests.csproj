@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net48</TargetFrameworks>
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
     <TargetFramework>net6.0</TargetFramework>
@@ -11,8 +12,8 @@
     <Compile Include="..\Nullability.Source\NullabilityInfo.cs" Link="NullabilityInfo.cs" Condition="$(TargetFramework) != 'net6.0'" />
     <Compile Include="..\Nullability.Source\NullabilityInfoContext.cs" Link="NullabilityInfoContext.cs" Condition="$(TargetFramework) != 'net6.0'" />
     <PackageReference Include="System.Net.Http" />
-    <PackageReference Include="Xunit" />
-    <PackageReference Include="Verify.Xunit" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Verify.XunitV3" />
     <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="MarkdownSnippets.MsBuild" Condition="$(TargetFramework) == 'net6.0'" />

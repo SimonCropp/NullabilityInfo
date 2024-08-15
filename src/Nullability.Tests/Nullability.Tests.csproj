@@ -2,14 +2,15 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net48</TargetFrameworks>
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
     <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Nullability.Source.Tests\Target.cs" Link="Target.cs" />
-    <PackageReference Include="Xunit" />
-    <PackageReference Include="Verify.Xunit" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Verify.XunitV3" />
     <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
