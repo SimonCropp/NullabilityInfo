@@ -3,6 +3,7 @@
     <TargetFrameworks>net6.0;net48</TargetFrameworks>
     <NoWarn>$(NoWarn);CS0649;CS8618;CS0105</NoWarn>
     <OutputType>Exe</OutputType>
+    <NoWarn>xUnit1051</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
     <TargetFramework>net6.0</TargetFramework>
