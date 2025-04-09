@@ -6,7 +6,7 @@
     <PackageTags>NullabilityInfo, Nullable</PackageTags>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <SignAssembly>false</SignAssembly>
-    <NoWarn>CS8600;CS8602;CS8604;IDE0049;IDE0007;CS1591</NoWarn>
+    <NoWarn>CS8600;CS8602;CS8604;IDE0049;IDE0007;CS1591;NU1608;NU1109</NoWarn>
     <LangVersion>preview</LangVersion>
     <ImplicitUsings Condition="'$(ImplicitUsings)' == ''">disable</ImplicitUsings>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
